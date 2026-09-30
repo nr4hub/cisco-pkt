@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cisco Packet Tracer — Complete Guide (Topics 1–15)</title>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&family=Noto+Sans+Sinhala:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--blue:#8ab4f8;--red:#f28b82;--yellow:#fdd663;--green:#81c995;--purple:#c58af9;--ink:#e8eaed;--sub:#9aa0a6;--paper:#232427;--bg:#131417;--line:#3c4043;--sh:0 1px 2px rgba(0,0,0,.5),0 2px 10px rgba(0,0,0,.4)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;overflow-x:hidden}
+h1,h2,h3,.st{font-family:'Google Sans',Roboto,sans-serif}
+.hero{background:linear-gradient(120deg,#1a73e8,#7B61FF 45%,#EA4335);padding:52px 24px 70px}
+.hi{max-width:1100px;margin:0 auto}
+.eyebrow{display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;background:rgba(255,255,255,.18);padding:6px 12px;border-radius:20px;margin-bottom:16px}
+.hero h1{font-size:32px;margin:0 0 10px;line-height:1.25}.hero p{max-width:700px;margin:0;opacity:.95}
+.layout{max-width:1180px;margin:-34px auto 60px;padding:0 24px;display:grid;grid-template-columns:240px 1fr;gap:28px;align-items:start}
+nav.toc{background:var(--paper);border-radius:16px;box-shadow:var(--sh);padding:14px 8px;position:sticky;top:16px}
+nav.toc .h{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--sub);padding:6px 14px 8px}
+nav.toc a{display:block;padding:9px 14px;border-radius:10px;color:var(--ink);text-decoration:none;font-size:13.5px;border-left:3px solid transparent}
+nav.toc a:hover{background:#2c2d30}nav.toc a.on{background:#2a3a55;color:#a8c7fa;border-left-color:var(--blue)}
+main{min-width:0}
+.section{background:var(--paper);border-radius:18px;box-shadow:var(--sh);padding:28px 30px;margin-bottom:22px;scroll-margin-top:16px}
+.k{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.nb{width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;flex:none}
+.section h2{font-size:21px;margin:0}.section p{color:#c7cbd1;font-size:15px;margin:0 0 14px}
+.sh{font-family:'Google Sans';font-weight:700;font-size:14.5px;margin:20px 0 8px}
+ul.l{margin:0 0 12px;padding-left:20px;color:#c7cbd1;font-size:14.5px}ul.l li{margin-bottom:6px}
+code,.mono{font-family:'Roboto Mono',monospace}code{background:#1a1b1e;padding:1px 6px;border-radius:5px;color:var(--yellow);font-size:13px}
+.co{background:#22344d;border-left:4px solid var(--blue);border-radius:10px;padding:13px 17px;font-size:14px;color:#a8c7fa;margin:14px 0}
+.co.tip{background:#1c2b22;border-left-color:var(--green);color:#bfe9cd}.co.warn{background:#3a2530;border-left-color:var(--red);color:#f3b8c2}.co b{color:#fff}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin:8px 0}
+table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:480px}
+th{text-align:left;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--sub);padding:10px 12px;border-bottom:2px solid var(--line)}
+td{padding:10px 12px;border-bottom:1px solid var(--line);color:#dfe1e5}tr:last-child td{border-bottom:none}
+.lab{background:#1a1b1e;border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:16px 0}
+.lab .t{font-family:'Google Sans';font-weight:700;font-size:12.5px;color:var(--yellow);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px}
+button,select,input{font:inherit}
+.btn{background:#2c2d30;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:500;padding:8px 14px;border-radius:9px;cursor:pointer}
+.btn:hover{background:#3a3b3e}.btn.p{background:#1a73e8;border-color:#1a73e8;color:#fff}.btn.on{background:#2a3a55;border-color:var(--blue);color:#a8c7fa}
+input[type=text],select{background:#202124;border:1px solid var(--line);color:var(--ink);padding:8px 11px;border-radius:9px;font-family:'Roboto Mono',monospace;font-size:13px}
+input:focus,select:focus{outline:none;border-color:var(--blue)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.out{background:#131417;border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-family:'Roboto Mono',monospace;font-size:12.5px;color:#c8f5d6;white-space:pre-wrap;min-height:48px;margin-top:10px}
+.zones{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.bits{display:flex;gap:14px;flex-wrap:wrap}.oct{text-align:center}
+.bit{width:34px;height:40px;margin:2px;border-radius:8px;border:1px solid var(--line);background:#202124;color:var(--sub);font-family:'Roboto Mono';font-size:16px;cursor:pointer}
+.bit.one{background:#2a3a55;border-color:var(--blue);color:#fff}
+.bw{font-size:10px;color:var(--sub);font-family:'Roboto Mono'}.dec{font-size:22px;font-weight:700;font-family:'Roboto Mono';color:var(--yellow);margin-top:4px}
+.bar{display:flex;height:34px;border-radius:8px;overflow:hidden;font-size:11px;font-weight:700;margin:10px 0}
+.bar div{display:flex;align-items:center;justify-content:center;color:#0d1f14;transition:width .3s}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.kv{background:#202124;border:1px solid var(--line);border-radius:10px;padding:9px 12px}
+.kv span{display:block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--sub)}.kv b{font-family:'Roboto Mono';font-size:14px;color:#fff}
+.nav2{display:flex;justify-content:space-between;gap:12px;margin-top:8px;flex-wrap:wrap;color:var(--sub);font-size:13px}
+@media(max-width:900px){.layout{grid-template-columns:1fr}nav.toc{position:static;display:flex;overflow-x:auto;padding:8px}nav.toc .h{display:none}nav.toc a{white-space:nowrap}.zones,.g2{grid-template-columns:1fr}.section{padding:22px 18px}}
+</style><style>
+.layers{display:grid;gap:6px}.ly{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:#202124;cursor:pointer;font-size:13.5px}
+.ly b{font-family:'Roboto Mono';width:22px;color:var(--yellow)}.ly.on{background:#2a3a55;border-color:var(--blue)}
+.pdu{display:flex;margin:12px 0;font-family:'Roboto Mono';font-size:12px;border-radius:8px;overflow:hidden;min-height:34px}.pdu div{padding:8px 10px;color:#0d1f14;font-weight:700;display:flex;align-items:center}
+.vl{display:flex;gap:8px;flex-wrap:wrap}.port{background:#202124;border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:12.5px;min-width:120px}
+.port select{width:100%;margin-top:6px;font-size:12px}
+nav.toc{max-height:calc(100vh - 32px);overflow:auto}
+.td{margin:10px 10px 4px;border-top:1px solid var(--line);padding-top:10px;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--sub)}
+.cli{background:#0d0f12;border:1px solid var(--line);border-radius:12px;margin:12px 0;overflow:hidden}
+.ch{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:7px 12px;background:#1a1b1e;border-bottom:1px solid var(--line);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--yellow);font-weight:700}
+.ch .btn{padding:4px 10px;font-size:11.5px;text-transform:none;letter-spacing:0}
+.cli pre{margin:0;padding:12px 14px;font-family:'Roboto Mono',monospace;font-size:12.5px;line-height:1.6;color:#c8f5d6;overflow-x:auto}
+.cli .cm{color:#7d8590}
+@media(max-width:900px){.td{display:none}}
+.si-toggle{display:inline-flex;align-items:center;gap:7px;background:#2a2b2e;border:1px solid var(--line);color:#a8c7fa;font-weight:500;font-size:12.5px;padding:7px 13px;border-radius:20px;cursor:pointer;white-space:nowrap}
+.si-divider{display:flex;align-items:center;gap:14px;margin:22px 0 0}.si-divider::before,.si-divider::after{content:'';flex:1;height:1px;background:var(--line)}
+.si-toggle:hover{background:#33343a;border-color:#5f6368}.si-toggle .arrow{display:inline-block;transition:transform .2s;font-size:10px}.si-toggle[aria-expanded="true"] .arrow{transform:rotate(180deg)}
+.si-panel{display:none;background:#1c2b22;border:1px solid #2f5b41;border-left:4px solid var(--green);border-radius:10px;padding:16px 20px;margin:14px 0 6px;font-family:'Noto Sans Sinhala',Roboto,sans-serif}
+.si-panel.open{display:block;animation:fs .18s ease}.si-panel p{color:#d3e9db;font-size:14.5px;margin:0 0 10px;line-height:1.85}.si-panel p:last-child{margin:0}.si-panel b{color:#fff}
+.si-panel code{background:#14201a;color:var(--yellow)}
+.si-label{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#7cc99a;font-weight:700;margin-bottom:8px;display:block}
+@keyframes fs{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.vocab-grid{display:flex;flex-direction:column;gap:18px}.vocab-card{background:#1a1b1e;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.vocab-header{display:flex;align-items:center;gap:12px;padding:14px 20px;border-bottom:1px solid var(--line);background:#202124}.vocab-word{font-family:'Google Sans';font-size:20px;font-weight:700;color:#a8c7fa}
+.vocab-pos{font-size:12px;color:var(--sub);font-style:italic;background:#2c2d30;padding:3px 9px;border-radius:20px}.vocab-body{padding:14px 20px}
+.vocab-meanings{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}.vocab-en{background:#1c2b3e;border-left:3px solid var(--blue);border-radius:8px;padding:10px 14px}.vocab-si{background:#1c2b22;border-left:3px solid var(--green);border-radius:8px;padding:10px 14px}
+.vocab-lang-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:6px;display:block;color:var(--sub)}
+.vocab-en p{color:#a8c7fa;font-size:13.5px;margin:0}.vocab-si p{color:#d3e9db;font-size:14.5px;margin:0;font-family:'Noto Sans Sinhala',Roboto,sans-serif}
+.vocab-sentences-head{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--sub);font-weight:700;margin-bottom:8px}
+.vocab-sentences{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}.vocab-sentences li{display:flex;gap:10px;font-size:13.5px;color:#c7cbd1}
+.vocab-tag{flex:none;font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:12px;margin-top:2px;height:fit-content}
+.tag-daily{background:#2a2b2e;color:#9aa0a6}.tag-cyber{background:#3a2530;color:#f3b8c2}.tag-net{background:#1c2b3e;color:#a8c7fa}.tag-hw{background:#2b2510;color:#fdd663}.tag-sw{background:#1c2b22;color:#81c995}
+.vocab-sentences b{color:#fff}@media(max-width:900px){.vocab-meanings{grid-template-columns:1fr}}
+.qcard{background:#1a1b1e;border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin:14px 0}.qcard p{margin:8px 0 12px;color:#dfe1e5}
+.qhead{display:flex;gap:10px;align-items:center}.qtag{font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;padding:2px 9px;border-radius:12px;background:#1c2b3e;color:#a8c7fa}
+.ans{display:none;margin-top:12px;background:#1c2b22;border-left:4px solid var(--green);border-radius:10px;padding:12px 16px;font-size:14px;color:#d3e9db}.ans.open{display:block}.ans b{color:#fff}.ans code{background:#14201a}
+.ans .tw{margin:8px 0}.ans table{min-width:560px}
+tr.cat td{background:#1a1b1e;color:var(--blue);font-family:'Google Sans';font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+tr.cr{cursor:pointer}tr.cr:hover td{background:#1e1f22}tr.cr code{white-space:pre-wrap}
+.mcq-head{display:flex;justify-content:space-between;align-items:center;background:#1a1b1e;border:1px solid var(--line);border-radius:12px;padding:10px 16px;margin:14px 0}
+.mcq-card{background:#1a1b1e;border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin-bottom:14px}.mcq-q{font-family:'Google Sans';font-size:15px;font-weight:600;margin:0 0 12px}.mcq-q span{color:var(--purple);margin-right:6px}
+.mcq-opts{display:flex;flex-direction:column;gap:8px}.mo{display:flex;gap:10px;align-items:center;text-align:left;background:#202124;border:1px solid var(--line);color:#dfe1e5;font-size:13.5px;padding:10px 14px;border-radius:10px;cursor:pointer}
+.mo:hover:not(.lk){background:#2c2d30}.mo i{flex:none;width:22px;height:22px;border-radius:50%;background:#2c2d30;color:var(--sub);font-size:11px;font-style:normal;font-weight:700;display:flex;align-items:center;justify-content:center}
+.mo.ok{background:#16301f;border-color:var(--green);color:#c8f5d6}.mo.bad{background:#33191c;border-color:var(--red);color:#f7c6c9}.mo.lk{cursor:default}
+.mnote{display:none;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font-size:12.5px;color:var(--sub)}.mnote.show{display:block}
+</style></head><body>
+<div class="hero"><div class="hi"><span class="eyebrow">Networking · Beginner → Intermediate</span>
+<h1>Cisco Packet Tracer — Complete Guide</h1>
+<p>15 topics in one page: interface, cabling, addressing, subnetting, VLANs, routing, DHCP, DNS, ACLs, NAT and OSPF. Each has an interactive tool, copy-ready Packet Tracer CLI commands and a 🇱🇰 Sinhala translation.</p></div></div>
+<div class="layout"><nav class="toc" id="toc"><div class="h">Topics</div><div class="td">Foundations</div><a href="#t1">1. Packet Tracer Interface</a><a href="#t2">2. Devices &amp; Cables</a><a href="#t3">3. Your First Network</a><a href="#t4">4. Binary &amp; IPv4</a><a href="#t5">5. Subnetting</a><div class="td">Switching &amp; Routing</div><a href="#t6">6. OSI &amp; TCP/IP</a><a href="#t7">7. The IOS CLI</a><a href="#t8">8. Routing &amp; Static Routes</a><a href="#t9">9. VLANs &amp; Trunks</a><a href="#t10">10. VLSM</a><div class="td">Services &amp; Security</div><a href="#t11">11. DHCP</a><a href="#t12">12. DNS &amp; Web Servers</a><a href="#t13">13. Access Lists (ACL)</a><a href="#t14">14. NAT &amp; PAT</a><a href="#t15">15. OSPF</a><div class="td">Sinhala</div><a href="#t16">16. 🇱🇰 Sinhala Vocabulary</a><div class="td">Practice &amp; Reference</div><a href="#t17">17. CLI Cheat Sheet</a><a href="#t18">18. Calculation Practice</a><a href="#t19">19. MCQ Practice Test</a></nav><main><section class="section" id="t1"><div class="k"><div class="nb" style="background:#4285F4">1</div><h2>What is Packet Tracer &amp; its Interface</h2></div>
+<p>Packet Tracer (PT) is Cisco's free network simulator. You drag devices onto a canvas, cable them, configure them, and watch packets move — no physical hardware needed.</p><div class="si-divider"><button class="si-toggle" data-target="si-t1" aria-expanded="false"><span class="flag">🇱🇰</span> සිංහල <span class="arrow">▾</span></button></div><div class="si-panel" id="si-t1"><span class="si-label">සිංහල පරිවර්තනය</span><p>Packet Tracer යනු Cisco විසින් නිපදවා ඇති නොමිලේ ලබාදෙන ජාල සමාකරණ (simulator) මෘදුකාංගයකි. භෞතික උපාංග නොමැතිව ම උපාංග Workspace එකට ඇදගෙන ඒමට, කේබල් මගින් සම්බන්ධ කිරීමට, සකස් කිරීමට (configure) සහ packets ගමන් කරන ආකාරය නිරීක්ෂණය කිරීමට හැක.</p><p><b>Realtime mode</b> එකේදී ජාලය සාමාන්‍ය වේගයෙන් ක්‍රියාත්මක වන අතර <b>Simulation mode</b> එකේදී packet එකින් එක පියවරෙන් පියවර බලා ඉගෙන ගත හැක. වැඩ කිරීමේ ක්‍රමය: උපාංග තබන්න → කේබල් සම්බන්ධ කරන්න → සකසන්න → ping මගින් පරීක්ෂා කරන්න → <b>.pkt</b> ලෙස save කරන්න.</p></div>
+<div class="sh">Interactive tour — click a zone</div>
+<div class="lab"><div class="zones" id="zones"></div><div class="out" id="zoneOut" style="color:#a8c7fa">Click a zone above.</div></div>
+<div class="sh">The two modes</div>
+<ul class="l"><li><b>Realtime</b> — the network runs at normal speed, like real life.</li><li><b>Simulation</b> — slows down so you can step through each packet and see PDUs at every OSI layer. Best for learning.</li></ul>
+<div class="co tip"><b>Workflow to remember:</b> Place devices → Cable them → Configure (IPs, etc.) → Test (ping) → Save (<code>.pkt</code>).</div><div class="sh">⌨ Packet Tracer CLI commands</div><div class="cli"><div class="ch"><span>⌨ PC: Desktop → Command Prompt</span><button class="btn cp">Copy</button></div><pre>ipconfig
+ipconfig /all
+ping 192.168.1.1
+tracert 192.168.2.10
+arp -a
+nslookup www.school.lk</pre></div><div class="cli"><div class="ch"><span>⌨ Router / Switch: double-click → CLI tab</span><button class="btn cp">Copy</button></div><pre><span class="cm">! press Enter first, then:</span>
+enable
+show version
+show running-config
+show ip interface brief</pre></div></section>
+<section class="section" id="t2"><div class="k"><div class="nb" style="background:#34A853">2</div><h2>Network Devices &amp; Cables</h2></div>
+<div class="tw"><table><tr><th>Device</th><th>Layer</th><th>Job</th></tr>
+<tr><td><b>Hub</b></td><td>1</td><td>Repeats every signal to all ports (one big collision domain). Obsolete.</td></tr>
+<tr><td><b>Switch</b></td><td>2</td><td>Learns MAC addresses; forwards frames only to the right port.</td></tr>
+<tr><td><b>Router</b></td><td>3</td><td>Connects different networks; forwards packets by IP address.</td></tr>
+<tr><td><b>End devices</b></td><td>—</td><td>PCs, laptops, servers, phones — send/receive data.</td></tr></table></div>
+<div class="sh">Which cable? Pick two devices</div>
+<div class="lab"><div class="row"><select id="cA"></select><span>↔</span><select id="cB"></select></div><div class="out" id="cOut" style="color:#a8c7fa"></div></div>
+<div class="co"><b>Rule:</b> <i>Different</i> device types → <b>Straight-through</b>. <i>Same</i> type → <b>Crossover</b>. (PC and Router count as the same "group".) Console cable (light-blue) is only for configuring a router/switch from a PC.</div>
+<div class="co warn">Modern PT devices support Auto-MDIX, so a wrong copper cable often still works — but exams expect the classic rule.</div><div class="sh">⌨ Packet Tracer CLI commands</div><div class="cli"><div class="ch"><span>⌨ Check links &amp; neighbours on a switch</span><button class="btn cp">Copy</button></div><pre>enable
+show ip interface brief
+show interfaces status
+show interfaces fa0/1
+show cdp neighbors
+show cdp neighbors detail
+show mac address-table</pre></div><div class="cli"><div class="ch"><span>⌨ Router ports are shut down by default</span><button class="btn cp">Copy</button></div><pre>enable
+configure terminal
+interface g0/0
+no shutdown
+end
+show ip interface brief</pre></div></section>
+<section class="section" id="t3"><div class="k"><div class="nb" style="background:#F09300">3</div><h2>Build Your First Network</h2></div>
+<p>Goal: two PCs connected through one switch that can ping each other.</p><div class="si-divider"><button class="si-toggle" data-target="si-t3" aria-expanded="false"><span class="flag">🇱🇰</span> සිංහල <span class="arrow">▾</span></button></div><div class="si-panel" id="si-t3"><span class="si-label">සිංහල පරිවර්තනය</span><p>PC දෙකක් switch එකකට straight-through කේබල් වලින් සම්බන්ධ කර, එකම subnet එකේ IP address (උදා: 192.168.1.10 සහ 192.168.1.11, mask 255.255.255.0) ලබාදී ping කළ විට ජාලය ක්‍රියා කරයි. Link එකේ light කොළ වන තෙක් (තත්පර 30ක් පමණ) රැඳී සිටින්න.</p><p>පළමු ping එකේ පළමු reply එක 'Request timed out' වීම සාමාන්‍යයි — හේතුව ARP මගින් MAC address සොයා ගැනීමයි. IP දෙක වෙනස් network වල නම් router එකක් නැතිව ping අසාර්ථක වේ.</p></div><div class="si-divider"><button class="si-toggle" data-target="si-t2" aria-expanded="false"><span class="flag">🇱🇰</span> සිංහල <span class="arrow">▾</span></button></div><div class="si-panel" id="si-t2"><span class="si-label">සිංහල පරිවර්තනය</span><p><b>Hub</b> එක ලැබෙන signal සියලු ports වලට යවන (Layer 1) පැරණි උපාංගයකි. <b>Switch</b> එක MAC address ඉගෙන ගෙන frame එක අදාළ port එකට පමණක් යවයි (Layer 2). <b>Router</b> එක වෙනස් ජාල සම්බන්ධ කර IP address අනුව packets යොමු කරයි (Layer 3). PC, server වැනි end devices දත්ත යවා ගනී.</p><p>කේබල් රීතිය: වෙනස් වර්ගයේ උපාංග → <b>Straight-through</b>; එකම වර්ගයේ උපාංග → <b>Crossover</b>. Console කේබලය භාවිත කරන්නේ router/switch එකක් PC එකකින් configure කිරීමට පමණි. Router ports පෙරනිමියෙන් shutdown වී ඇති නිසා <b>no shutdown</b> දිය යුතුය.</p></div>
+<ol class="l"><li>Bottom-left palette → <b>End Devices</b> → drag 2 PCs. <b>Network Devices → Switches</b> → drag a 2960.</li>
+<li>Choose <b>Connections → Copper Straight-Through</b>. Click PC0 → <code>FastEthernet0</code>, then Switch → <code>Fa0/1</code>. Repeat PC1 → <code>Fa0/2</code>.</li>
+<li>Wait until link lights turn <b style="color:var(--green)">green</b> (switch ports take ~30s to start forwarding).</li>
+<li>Click PC → <b>Desktop → IP Configuration</b> and set the address.</li>
+<li><b>Desktop → Command Prompt</b> → <code>ping 192.168.1.11</code>.</li></ol>
+<div class="sh">Practice lab — simulated (click a PC to configure it)</div>
+<div class="lab"><svg viewBox="0 0 520 130" style="width:100%;max-width:520px"><line x1="90" y1="65" x2="260" y2="65" stroke="#34A853" stroke-width="3"/><line x1="260" y1="65" x2="430" y2="65" stroke="#34A853" stroke-width="3"/>
+<g id="pc0" style="cursor:pointer"><rect x="40" y="38" width="100" height="54" rx="10" fill="#1c2b3e" stroke="#8ab4f8"/><text x="90" y="62" fill="#fff" text-anchor="middle" font-size="14" font-weight="700">PC0</text><text id="l0" x="90" y="80" fill="#9aa0a6" text-anchor="middle" font-size="10">not set</text></g>
+<rect x="215" y="45" width="90" height="40" rx="8" fill="#2a2d1e" stroke="#fdd663"/><text x="260" y="69" fill="#fdd663" text-anchor="middle" font-size="13" font-weight="700">Switch0</text>
+<g id="pc1" style="cursor:pointer"><rect x="380" y="38" width="100" height="54" rx="10" fill="#1c2b3e" stroke="#8ab4f8"/><text x="430" y="62" fill="#fff" text-anchor="middle" font-size="14" font-weight="700">PC1</text><text id="l1" x="430" y="80" fill="#9aa0a6" text-anchor="middle" font-size="10">not set</text></g></svg>
+<div class="row"><b id="sel" style="color:var(--blue)">PC0</b><input type="text" id="ip" placeholder="IP e.g. 192.168.1.10" size="20"><input type="text" id="mk" value="255.255.255.0" size="15"><button class="btn" id="setBtn">Set</button></div>
+<div class="row"><button class="btn p" id="p01">PC0 ping PC1</button><button class="btn p" id="p10">PC1 ping PC0</button><button class="btn" id="clr">Reset</button></div>
+<div class="out" id="pingOut">C:\&gt; </div></div>
+<div class="co tip"><b>Try it:</b> set PC0 = 192.168.1.10 and PC1 = 192.168.1.11 → success. Then change PC1 to 192.168.2.11 → fails (different network, no router). Notice the first ping's 1st reply usually times out — that's ARP resolving the MAC address.</div><div class="sh">⌨ Packet Tracer CLI commands</div><div class="cli"><div class="ch"><span>⌨ Switch: basic setup</span><button class="btn cp">Copy</button></div><pre>enable
+configure terminal
+hostname SW1
+no ip domain-lookup
+interface vlan 1
+ip address 192.168.1.2 255.255.255.0
+no shutdown
+exit
+interface range fa0/1 - 2
+description User ports
+end
+copy running-config startup-config</pre></div><div class="cli"><div class="ch"><span>⌨ Switch: verify</span><button class="btn cp">Copy</button></div><pre>show mac address-table
+show interfaces fa0/1
+show ip interface brief</pre></div><div class="cli"><div class="ch"><span>⌨ PC: Command Prompt</span><button class="btn cp">Copy</button></div><pre>ipconfig /all
+ping 192.168.1.11
+arp -a</pre></div></section>
+<section class="section" id="t4"><div class="k"><div class="nb" style="background:#7B61FF">4</div><h2>Binary &amp; IPv4 Addressing</h2></div>
+<p>An IPv4 address is 32 bits, written as 4 octets (8 bits each) in decimal. Each bit has a place value: <code>128 64 32 16 8 4 2 1</code>. Add the values where the bit is 1.</p><div class="si-divider"><button class="si-toggle" data-target="si-t4" aria-expanded="false"><span class="flag">🇱🇰</span> සිංහල <span class="arrow">▾</span></button></div><div class="si-panel" id="si-t4"><span class="si-label">සිංහල පරිවර්තනය</span><p>IPv4 address එකක් බිට් 32කින් සමන්විතය; බිට් 8 බැගින් octets 4කි. බිට් එකක තැන් අගයන් 128, 64, 32, 16, 8, 4, 2, 1 වේ; 1 ලෙස ඇති බිට් වල අගයන් එකතු කළ විට දශම අගය ලැබේ. උදා: 11000000 = 128 + 64 = 192.</p><p>Class A (1–126, /8), Class B (128–191, /16), Class C (192–223, /24). Private ranges: 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16. 127.x.x.x යනු loopback වන අතර 169.254.x.x (APIPA) DHCP අසාර්ථක වූ විට ලැබේ.</p></div>
+<div class="sh">Click the bits to build an address</div>
+<div class="lab"><div class="bits" id="bits"></div>
+<div class="row mono" style="font-size:20px;margin-top:14px"><b id="ipOut" style="color:#fff"></b></div><div class="out" id="ipInfo" style="color:#a8c7fa"></div>
+<div class="row"><input type="text" id="ipIn" placeholder="or type 10.0.0.1" size="18"><button class="btn" id="ipGo">Load</button></div></div>
+<div class="tw"><table><tr><th>Class</th><th>First octet</th><th>Default mask</th><th>Use</th></tr>
+<tr><td>A</td><td>1–126</td><td>/8</td><td>Huge networks</td></tr><tr><td>B</td><td>128–191</td><td>/16</td><td>Medium</td></tr><tr><td>C</td><td>192–223</td><td>/24</td><td>Small LANs</td></tr><tr><td>D / E</td><td>224–239 / 240+</td><td>—</td><td>Multicast / experimental</td></tr></table></div>
+<div class="co"><b>Private ranges (RFC 1918):</b> <code>10.0.0.0/8</code>, <code>172.16.0.0/12</code>, <code>192.168.0.0/16</code>. <code>127.x.x.x</code> is loopback; <code>169.254.x.x</code> is APIPA (DHCP failed).</div><div class="sh">⌨ Packet Tracer CLI commands</div><div class="cli"><div class="ch"><span>⌨ Router: assign IPv4 addresses</span><button class="btn cp">Copy</button></div><pre>enable
+configure terminal
+interface g0/0
+description LAN
+ip address 192.168.1.1 255.255.255.0
+no shutdown
+exit
+interface g0/1
+ip address 172.16.0.1 255.255.0.0
+no shutdown
+end</pre></div><div class="cli"><div class="ch"><span>⌨ Verify</span><button class="btn cp">Copy</button></div><pre>show ip interface brief
+show ip interface g0/0
+show protocols</pre></div></section>
+<section class="section" id="t5"><div class="k"><div class="nb" style="background:#EA4335">5</div><h2>Subnet Masks &amp; Subnetting</h2></div>
+<p>The mask splits an address into <b>network bits</b> (1s) and <b>host bits</b> (0s). Formulas: <b>hosts per subnet = 2<sup>h</sup> − 2</b> and <b>subnets = 2<sup>borrowed bits</sup></b>.</p><div class="si-divider"><button class="si-toggle" data-target="si-t5" aria-expanded="false"><span class="flag">🇱🇰</span> සිංහල <span class="arrow">▾</span></button></div><div class="si-panel" id="si-t5"><span class="si-label">සිංහල පරිවර්තනය</span><p>Subnet mask එකේ <b>1</b> බිට් network කොටස ද, <b>0</b> බිට් host කොටස ද නිරූපණය කරයි. Hosts ගණන = 2<sup>h</sup> − 2 සහ subnets ගණන = 2<sup>ණයට ගත් බිට් ගණන</sup>. උදා: 192.168.1.0/24 ජාලය subnets 4කට බෙදීමට බිට් 2ක් ණයට ගෙන <b>/26</b> (255.255.255.192) ලබා ගනී.</p><p>Block size = 256 − 192 = 64; ජාල: .0, .64, .128, .192; එක් subnet එකකට hosts 62ක්. කෙටි ක්‍රමය: Broadcast = ඊළඟ network address − 1.</p></div>
+<div class="sh">Subnet calculator</div>
+<div class="lab"><div class="row"><input type="text" id="sIp" value="192.168.1.77" size="16"><span>/</span><input type="text" id="sCidr" value="26" size="3"><input type="range" id="sRange" min="8" max="30" value="26"></div>
+<div class="bar" id="sBar"></div><div class="g2" id="sGrid"></div>
+<div class="row"><span style="color:var(--sub);font-size:13px">Split the network into /</span><select id="sNew"></select><span style="color:var(--sub);font-size:13px" id="sCount"></span></div>
+<div class="tw"><table id="sTbl"></table></div></div>
+<div class="sh">Worked example — 192.168.1.0/24 into 4 subnets</div>
+<ul class="l"><li>Need 4 subnets → borrow 2 bits (2²=4) → new mask <b>/26</b> = 255.255.255.192.</li><li>Block size = 256 − 192 = <b>64</b> → networks at .0, .64, .128, .192.</li><li>Hosts each = 2⁶ − 2 = <b>62</b>. Subnet .64: first host .65, last .126, broadcast .127.</li></ul>
+<div class="co tip"><b>Shortcut:</b> block size = 256 − (interesting octet of mask). Broadcast = next network − 1.</div><div class="sh">⌨ Packet Tracer CLI commands</div><div class="cli"><div class="ch"><span>⌨ Router: 192.168.1.0/24 split into /26 subnets</span><button class="btn cp">Copy</button></div><pre>enable
+configure terminal
+<span class="cm">! subnet 192.168.1.0/26</span>
+interface g0/0
+ip address 192.168.1.1 255.255.255.192
+no shutdown
+exit
+<span class="cm">! subnet 192.168.1.64/26</span>
+interface g0/1
+ip address 192.168.1.65 255.255.255.192
+no shutdown
+exit
+<span class="cm">! subnet 192.168.1.128/26</span>
+interface g0/2
+ip address 192.168.1.129 255.255.255.192
+no shutdown
+end</pre></div><div class="cli"><div class="ch"><span>⌨ Verify the subnets</span><button class="btn cp">Copy</button></div><pre>show ip route connected
+show ip interface brief</pre></div></section>
+<section class="section" id="t6"><div class="k"><div class="nb" style="background:#4285F4">6</div><h2>OSI &amp; TCP/IP Models</h2></div>
+<p>Models split networking into layers so each does one job. Data gets wrapped with a new header at each layer going down (<b>encapsulation</b>) and unwrapped going up (<b>de-encapsulation</b>). In Packet Tracer Simulation mode, click a packet to see exactly these layers.</p><div class="si-divider"><button class="si-toggle" data-target="si-t6" aria-expanded="false"><span class="flag">🇱🇰</span> සිංහල <span class="arrow">▾</span></button></div><div class="si-panel" id="si-t6"><span class="si-label">සිංහල පරිවර්තනය</span><p>OSI ආකෘතිය ස්ථර 7කින් (Application, Presentation, Session, Transport, Network, Data Link, Physical) සමන්විත වන අතර TCP/IP ආකෘතිය ස්ථර 4කි. දත්ත පහළට යන විට එක් එක් ස්ථරයේ header එකක් එකතු වේ (<b>encapsulation</b>); ලබන්නා පැත්තේ ඒවා ඉවත් වේ (de-encapsulation).</p><p>PDU: Application → Data, Transport → Segment, Network → Packet, Data Link → Frame, Physical → Bits. Switch Layer 2 හි ද, Router Layer 3 හි ද, Hub Layer 1 හි ද ක්‍රියා කරයි. මතක තබා ගැනීමට: <i>All People Seem To Need Data Processing</i>.</p></div>
+<div class="sh">Click a layer</div>
+<div class="lab"><div class="layers" id="layers"></div><div class="pdu" id="pdu"></div><div class="out" id="lyOut" style="color:#a8c7fa"></div></div>
+<div class="tw"><table><tr><th>TCP/IP layer</th><th>OSI layers</th><th>Examples</th></tr>
+<tr><td>Application</td><td>7, 6, 5</td><td>HTTP, DNS, DHCP, FTP</td></tr><tr><td>Transport</td><td>4</td><td>TCP, UDP</td></tr><tr><td>Internet</td><td>3</td><td>IP, ICMP</td></tr><tr><td>Network Access</td><td>2, 1</td><td>Ethernet, Wi-Fi</td></tr></table></div>
+<div class="co tip"><b>Memory aid (top→bottom):</b> <i>All People Seem To Need Data Processing</i>. Units: Segment (L4), Packet (L3), Frame (L2), Bits (L1).</div><div class="sh">⌨ Packet Tracer CLI commands</div><div class="cli"><div class="ch"><span>⌨ Troubleshoot layer by layer</span><button class="btn cp">Copy</button></div><pre><span class="cm">! Layer 1 - Physical</span>
+show interfaces
+show ip interface brief
+<span class="cm">! Layer 2 - Data link</span>
+show mac address-table
+show vlan brief
+show cdp neighbors
+<span class="cm">! Layer 3 - Network</span>
+show arp
+show ip route
+ping 192.168.1.1
+traceroute 192.168.2.10
+<span class="cm">! Layer 7 - Application (needs vty configured)</span>
+telnet 192.168.1.1</pre></div></section>
+<section class="section" id="t7"><div class="k"><div class="nb" style="background:#34A853">7</div><h2>The Cisco IOS Command Line</h2></div>
+<p>Double-click a router or switch → <b>CLI</b> tab. IOS has modes; the prompt tells you which one you are in.</p><div class="si-divider"><button class="si-toggle" data-target="si-t7" aria-expanded="false"><span class="flag">🇱🇰</span> සිංහල <span class="arrow">▾</span></button></div><div class="si-panel" id="si-t7"><span class="si-label">සිංහල පරිවර්තනය</span><p>Cisco IOS හි mode කිහිපයක් ඇත: User EXEC (<code>&gt;</code>), Privileged EXEC (<code>#</code>, enable මගින්), Global config (<code>(config)#</code>, configure terminal මගින්) සහ Interface config (<code>(config-if)#</code>). Prompt එක බලා ඔබ සිටින mode එක හඳුනාගත හැක.</p><p>වැදගත් command: <code>show ip interface brief</code>, <code>show running-config</code>, <code>copy running-config startup-config</code> (save කිරීමට අමතක නොකරන්න!). <code>?</code> ටයිප් කළ විට command ලැයිස්තුව පෙන්වයි; <code>conf t</code> වැනි කෙටි ආකාර ද ක්‍රියා කරයි. Password, SSH සහ banner මගින් උපාංගය ආරක්ෂා කරගත හැක.</p></div>
+<div class="tw"><table><tr><th>Mode</th><th>Prompt</th><th>Enter with</th></tr>
+<tr><td>User EXEC</td><td><code>Router&gt;</code></td><td>(default)</td></tr><tr><td>Privileged EXEC</td><td><code>Router#</code></td><td><code>enable</code></td></tr>
+<tr><td>Global config</td><td><code>Router(config)#</code></td><td><code>configure terminal</code></td></tr><tr><td>Interface config</td><td><code>Router(config-if)#</code></td><td><code>interface g0/0</code></td></tr></table></div>
+<div class="sh">Practice CLI (type real commands; try <code>?</code>)</div>
+<div class="lab"><div class="out" id="cli" style="color:#e8eaed;min-height:170px;max-height:260px;overflow:auto"></div>
+<div class="row"><input type="text" id="cmd" style="flex:1;min-width:200px" placeholder="enable → conf t → hostname R1 → interface g0/0 → ip address 192.168.1.1 255.255.255.0 → no shutdown" autocomplete="off"><button class="btn p" id="cmdGo">Enter</button></div></div>
+<div class="co"><b>Essentials:</b> <code>show ip interface brief</code>, <code>show running-config</code>, <code>copy running-config startup-config</code> (save!), <code>exit</code>, <code>end</code>. Abbreviations work: <code>conf t</code>, <code>int g0/0</code>, <code>sh ip int br</code>.</div><div class="sh">⌨ Packet Tracer CLI commands</div><div class="cli"><div class="ch"><span>⌨ Basic setup (router or switch)</span><button class="btn cp">Copy</button></div><pre>enable
+configure terminal
+hostname R1
+no ip domain-lookup
+enable secret Cisco123
+service password-encryption
+banner motd #Authorized access only#
+line console 0
+password ConPass1
+login
+logging synchronous
+exec-timeout 10 0
+exit
+line vty 0 4
+password VtyPass1
+login
+exit
+end
+copy running-config startup-config</pre></div><div class="cli"><div class="ch"><span>⌨ Enable SSH instead of Telnet</span><button class="btn cp">Copy</button></div><pre>configure terminal
+ip domain-name lab.local
+username admin secret Admin123
+crypto key generate rsa general-keys modulus 1024
+ip ssh version 2
+line vty 0 4
+login local
+transport input ssh
+end</pre></div><div class="cli"><div class="ch"><span>⌨ Show, save, erase, reload</span><button class="btn cp">Copy</button></div><pre>show running-config
+show startup-config
+show version
+show history
+copy running-config startup-config
+<span class="cm">! from any config mode, run show commands with do</span>
+do show ip interface brief
+<span class="cm">! wipe the device</span>
+erase startup-config
+reload</pre></div></section>
+<section class="section" id="t8"><div class="k"><div class="nb" style="background:#F09300">8</div><h2>Routing Between Networks &amp; Static Routes</h2></div>
+<p>A switch cannot connect different IP networks; a <b>router</b> can. Each PC needs a <b>default gateway</b> — the router interface IP on its own network. The router decides where to send a packet using its <b>routing table</b>, picking the <b>longest matching prefix</b>.</p><div class="si-divider"><button class="si-toggle" data-target="si-t8" aria-expanded="false"><span class="flag">🇱🇰</span> සිංහල <span class="arrow">▾</span></button></div><div class="si-panel" id="si-t8"><span class="si-label">සිංහල පරිවර්තනය</span><p>Switch එකකට වෙනස් IP network සම්බන්ධ කළ නොහැක; ඒ සඳහා router එකක් අවශ්‍යයි. එක් එක් PC එකට <b>default gateway</b> (තමන්ගේ network එකේ router interface IP) ලබාදිය යුතුය. Router එක routing table එක බලා දිගම ගැලපෙන prefix එක (longest prefix match) තෝරා ගනී.</p><p>සෘජුව සම්බන්ධ networks routing table එකට <b>C</b> ලෙස ස්වයංක්‍රීයව එක් වේ; දුරස්ථ networks සඳහා static route (<code>ip route</code>) හෝ dynamic protocol අවශ්‍යයි. Default route (0.0.0.0 0.0.0.0) මගින් නොදන්නා සියලු ගමනාන්ත එක් next hop එකකට යොමු කළ හැක. Return route එක ද අමතක නොකරන්න.</p></div>
+<ol class="l"><li>Connect router to each switch (straight-through, <code>G0/0</code> and <code>G0/1</code>).</li><li>Give each router interface an IP and <code>no shutdown</code>.</li><li>Set PC default gateways.</li><li>Directly connected networks appear automatically (code <b>C</b>). Remote networks need routes.</li></ol>
+<div class="co"><b>Static route syntax:</b> <code>ip route &lt;dest-network&gt; &lt;mask&gt; &lt;next-hop-ip&gt;</code> &nbsp;e.g. <code>ip route 10.2.0.0 255.255.0.0 192.168.12.2</code>. Default route: <code>ip route 0.0.0.0 0.0.0.0 &lt;next-hop&gt;</code>.</div>
+<div class="sh">Routing table lookup — type a destination IP</div>
+<div class="lab"><div class="tw"><table id="rt"></table></div><div class="row"><input type="text" id="dst" value="10.1.5.9" size="16"><button class="btn p" id="dstGo">Lookup</button></div><div class="out" id="rtOut" style="color:#a8c7fa"></div></div>
+<div class="co tip">Try <code>10.1.5.9</code> (matches /16 and /8 → /16 wins), <code>8.8.8.8</code> (default route) and <code>192.168.1.50</code> (connected).</div><div class="sh">⌨ Packet Tracer CLI commands</div><div class="cli"><div class="ch"><span>⌨ Router with two LANs</span><button class="btn cp">Copy</button></div><pre>enable
+configure terminal
+interface g0/0
+ip address 192.168.1.1 255.255.255.0
+no shutdown
+exit
+interface g0/1
+ip address 192.168.2.1 255.255.255.0
+no shutdown
+end</pre></div><div class="cli"><div class="ch"><span>⌨ Static routes (reference - choose one form per route)</span><button class="btn cp">Copy</button></div><pre>configure terminal
+<span class="cm">! next-hop form (recommended)</span>
+ip route 192.168.3.0 255.255.255.0 10.0.12.2
+<span class="cm">! exit-interface form (point-to-point serial only)</span>
+ip route 192.168.3.0 255.255.255.0 serial0/0/0
+<span class="cm">! default route</span>
+ip route 0.0.0.0 0.0.0.0 10.0.12.2
+<span class="cm">! floating static backup (AD 5)</span>
+ip route 192.168.3.0 255.255.255.0 10.0.13.2 5
+<span class="cm">! remove a route</span>
+no ip route 192.168.3.0 255.255.255.0 10.0.12.2
+end</pre></div><div class="cli"><div class="ch"><span>⌨ Verify</span><button class="btn cp">Copy</button></div><pre>show ip route
+show ip route static
+ping 192.168.3.10
+traceroute 192.168.3.10</pre></div></section>
+<section class="section" id="t9"><div class="k"><div class="nb" style="background:#7B61FF">9</div><h2>VLANs &amp; Trunks</h2></div>
+<p>A <b>VLAN</b> splits one physical switch into separate logical networks (separate broadcast domains). Devices in different VLANs cannot talk without a router (inter-VLAN routing). A <b>trunk</b> port carries many VLANs between switches, tagged with 802.1Q.</p><div class="si-divider"><button class="si-toggle" data-target="si-t9" aria-expanded="false"><span class="flag">🇱🇰</span> සිංහල <span class="arrow">▾</span></button></div><div class="si-panel" id="si-t9"><span class="si-label">සිංහල පරිවර්තනය</span><p><b>VLAN</b> මගින් එක් භෞතික switch එකක් වෙන් වෙන් තාර්කික ජාලවලට (broadcast domains) බෙදයි. වෙනස් VLAN වල උපාංග එකිනෙකා සමඟ කතා කිරීමට router එකක් (router-on-a-stick) හෝ Layer 3 switch එකක් අවශ්‍යයි.</p><p><b>Trunk</b> port එකක් switch අතර VLAN කිහිපයක් 802.1Q tag සමඟ ගෙන යයි; access port එකක් එක් VLAN එකකට පමණි. VLAN එකකට නොදුන් ports VLAN 1 හි පවතී. පරීක්ෂා කිරීමට <code>show vlan brief</code> සහ <code>show interfaces trunk</code> භාවිත කරන්න.</p></div>
+<div class="sh">Assign ports, then test</div>
+<div class="lab"><div class="vl" id="vl"></div><div class="row"><select id="va"></select><span>ping</span><select id="vb"></select><button class="btn p" id="vGo">Ping</button></div><div class="out" id="vOut" style="color:#a8c7fa"></div></div>
+
+<div class="co warn">Same-VLAN hosts also need IPs in the same subnet. Check with <code>show vlan brief</code>; unassigned ports stay in VLAN 1.</div><div class="sh">⌨ Packet Tracer CLI commands</div><div class="cli"><div class="ch"><span>⌨ Switch: create VLANs and assign access ports</span><button class="btn cp">Copy</button></div><pre>enable
+configure terminal
+vlan 10
+name SALES
+vlan 20
+name HR
+exit
+interface range fa0/1 - 2
+switchport mode access
+switchport access vlan 10
+exit
+interface range fa0/3 - 4
+switchport mode access
+switchport access vlan 20
+end
+copy running-config startup-config</pre></div><div class="cli"><div class="ch"><span>⌨ Trunk between switches</span><button class="btn cp">Copy</button></div><pre>configure terminal
+interface g0/1
+switchport mode trunk
+switchport trunk allowed vlan 10,20
+<span class="cm">! only if VLAN 99 exists</span>
+switchport trunk native vlan 99
+end</pre></div><div class="cli"><div class="ch"><span>⌨ Router-on-a-stick (router side; switch port must be a trunk)</span><button class="btn cp">Copy</button></div><pre>configure terminal
+interface g0/0
+no shutdown
+exit
+interface g0/0.10
+encapsulation dot1Q 10
+ip address 192.168.10.1 255.255.255.0
+exit
+interface g0/0.20
+encapsulation dot1Q 20
+ip address 192.168.20.1 255.255.255.0
+end</pre></div><div class="cli"><div class="ch"><span>⌨ Verify / remove</span><button class="btn cp">Copy</button></div><pre>show vlan brief
+show interfaces trunk
+show interfaces fa0/1 switchport
+show ip interface brief
+<span class="cm">! delete a VLAN</span>
+configure terminal
+no vlan 20</pre></div></section>
+<section class="section" id="t10"><div class="k"><div class="nb" style="background:#EA4335">10</div><h2>VLSM — Variable Length Subnet Masks</h2></div>
+<p>VLSM gives each subnet the size it actually needs, wasting fewer addresses. Method: <b>sort requirements largest → smallest</b>, then allocate each at the next free address using the smallest block that fits (hosts + 2 ≤ block size).</p><div class="si-divider"><button class="si-toggle" data-target="si-t10" aria-expanded="false"><span class="flag">🇱🇰</span> සිංහල <span class="arrow">▾</span></button></div><div class="si-panel" id="si-t10"><span class="si-label">සිංහල පරිවර්තනය</span><p><b>VLSM</b> මගින් එක් එක් subnet එකට අවශ්‍ය ප්‍රමාණයට අනුව විවිධ mask දී address නාස්තිය අඩු කරයි. ක්‍රමය: අවශ්‍යතා විශාලතම සිට කුඩාම දක්වා පෙළගස්වන්න; එක් එක් එකට (hosts + 2) ට ප්‍රමාණවත් කුඩාම block එක ඊළඟ නිදහස් address එකෙන් ආරම්භයට ලබාදෙන්න.</p><p>Router දෙකක් අතර point-to-point link සඳහා host 2ක් පමණක් අවශ්‍ය නිසා <b>/30</b> භාවිත කරයි. මුළු block ප්‍රමාණය මූලික ජාලයට ඇතුළත් වන්නේදැයි සැමවිටම පරීක්ෂා කරන්න.</p></div>
+<div class="lab"><div class="row"><span style="color:var(--sub)">Base network</span><input type="text" id="vBase" value="192.168.10.0" size="14"><span>/</span><input type="text" id="vPre" value="24" size="3"></div>
+<div class="row"><span style="color:var(--sub)">Hosts needed (comma separated)</span><input type="text" id="vHosts" value="100, 50, 25, 10, 2" size="26"></div><div class="tw"><table id="vTbl"></table></div><div class="out" id="vMsg" style="color:#a8c7fa"></div></div>
+<div class="co tip"><b>Point-to-point router links</b> need only 2 hosts → <code>/30</code>. Always verify the total block sizes fit inside the base network.</div>
+<div class="sh">⌨ Packet Tracer CLI commands</div><div class="cli"><div class="ch"><span>⌨ Router: 192.168.10.0/24 VLSM plan (100, 50, 25, 10, 2 hosts)</span><button class="btn cp">Copy</button></div><pre>enable
+configure terminal
+interface g0/0
+description LAN-A 100 hosts /25
+ip address 192.168.10.1 255.255.255.128
+no shutdown
+exit
+interface g0/1
+description LAN-B 50 hosts /26
+ip address 192.168.10.129 255.255.255.192
+no shutdown
+exit
+interface g0/2
+description LAN-C 25 hosts /27
+ip address 192.168.10.193 255.255.255.224
+no shutdown
+exit
+<span class="cm">! point-to-point link /30 (needs a serial WIC module)</span>
+interface s0/0/0
+description Link to R2
+ip address 192.168.10.241 255.255.255.252
+<span class="cm">! clock rate only on the DCE end of the cable</span>
+clock rate 64000
+no shutdown
+end</pre></div><div class="cli"><div class="ch"><span>⌨ Verify</span><button class="btn cp">Copy</button></div><pre>show ip interface brief
+show ip route connected
+show controllers serial 0/0/0</pre></div></section>
+<section class="section" id="t11"><div class="k"><div class="nb" style="background:#4285F4">11</div><h2>DHCP — Automatic IP Addressing</h2></div>
+<p>DHCP hands out IP address, mask, gateway and DNS automatically. In Packet Tracer: PC → <b>Desktop → IP Configuration → DHCP</b>. The server can be a Server device (<b>Services → DHCP</b>) or a router.</p><div class="si-divider"><button class="si-toggle" data-target="si-t11" aria-expanded="false"><span class="flag">🇱🇰</span> සිංහල <span class="arrow">▾</span></button></div><div class="si-panel" id="si-t11"><span class="si-label">සිංහල පරිවර්තනය</span><p><b>DHCP</b> මගින් IP address, mask, gateway සහ DNS ස්වයංක්‍රීයව ලබාදේ. ක්‍රියාවලිය <b>DORA</b> ලෙස හැඳින්වේ: Discover (PC එක broadcast කරයි), Offer (server එක ලිපිනයක් පිරිනමයි), Request (PC එක පිළිගනී), Acknowledge (server එක තහවුරු කරයි).</p><p>Static ලෙස භාවිතා කරන ලිපින (router, server) <code>ip dhcp excluded-address</code> මගින් pool එකෙන් ඉවත් කළ යුතුය. PC එකට 169.254.x.x ලැබුණේ නම් DHCP අසාර්ථකය (APIPA). Router එකකින් එහා ඇති server එකක් භාවිත කරන්නේ නම් <code>ip helper-address</code> අවශ්‍යයි.</p></div>
+<div class="sh">The DORA exchange — click each step</div>
+<div class="lab"><div class="row" id="dora"></div><div class="out" id="doraOut" style="color:#a8c7fa"></div></div>
+<div class="sh">Router as DHCP server</div>
+
+<div class="sh">Pool size calculator</div>
+<div class="lab"><div class="row"><input type="text" id="dNet" value="192.168.1.0" size="14"><span>/</span><input type="text" id="dPre" value="24" size="3"><span style="color:var(--sub)">excluded addresses</span><input type="text" id="dEx" value="10" size="4"></div><div class="out" id="dOut" style="color:#a8c7fa"></div></div>
+<div class="co warn">A PC showing <code>169.254.x.x</code> means DHCP failed (APIPA). Across routers, the router needs <code>ip helper-address &lt;dhcp-server&gt;</code> on the client-facing interface.</div><div class="sh">⌨ Packet Tracer CLI commands</div><div class="cli"><div class="ch"><span>⌨ Router as DHCP server</span><button class="btn cp">Copy</button></div><pre>enable
+configure terminal
+ip dhcp excluded-address 192.168.1.1 192.168.1.10
+ip dhcp pool LAN1
+network 192.168.1.0 255.255.255.0
+default-router 192.168.1.1
+dns-server 8.8.8.8
+domain-name school.lk
+lease 7
+exit
+end</pre></div><div class="cli"><div class="ch"><span>⌨ Relay DHCP across a router (client-facing interface)</span><button class="btn cp">Copy</button></div><pre>configure terminal
+interface g0/1
+ip helper-address 10.0.0.5
+end</pre></div><div class="cli"><div class="ch"><span>⌨ Verify, clear &amp; client side</span><button class="btn cp">Copy</button></div><pre>show ip dhcp binding
+show ip dhcp pool
+show ip dhcp conflict
+clear ip dhcp binding *
+<span class="cm">! router interface as DHCP client</span>
+configure terminal
+interface g0/0
+ip address dhcp
+no shutdown
+end
+<span class="cm">! PC Command Prompt</span>
+ipconfig /release
+ipconfig /renew</pre></div></section>
+<section class="section" id="t12"><div class="k"><div class="nb" style="background:#34A853">12</div><h2>DNS &amp; Web Servers</h2></div>
+<p>DNS turns names into IPs; HTTP then fetches the page. In PT: Server → <b>Services → DNS</b> (add an <i>A record</i>) and <b>Services → HTTP</b>. On the PC, set the <b>DNS Server</b> address, then open <b>Desktop → Web Browser</b>.</p><div class="si-divider"><button class="si-toggle" data-target="si-t12" aria-expanded="false"><span class="flag">🇱🇰</span> සිංහල <span class="arrow">▾</span></button></div><div class="si-panel" id="si-t12"><span class="si-label">සිංහල පරිවර්තනය</span><p><b>DNS</b> මගින් www.school.lk වැනි නම් IP address බවට පරිවර්තනය කරයි; ඉන්පසු HTTP මගින් web page එක ලබාගනී. Packet Tracer හි server එකේ Services → DNS හි A record එකක් සාදා, PC එකේ DNS server ලිපිනය ලබාදී, Web Browser භාවිත කරන්න.</p><p>දෝෂ සෙවීම: IP address මගින් ping කළ විට ක්‍රියා කර නමෙන් අසාර්ථක නම් ගැටලුව DNS හි ය, සම්බන්ධතාවයේ නොවේ. HTTP service එක OFF නම් connection refused ලැබේ.</p></div>
+<div class="sh">Try a browser request</div>
+<div class="lab"><div class="tw"><table><tr><th>DNS A record (server 10.0.0.53)</th><th>IP</th></tr><tr><td>www.school.lk</td><td>10.0.0.80</td></tr><tr><td>mail.school.lk</td><td>10.0.0.25</td></tr></table></div>
+<div class="row"><input type="text" id="url" value="www.school.lk" size="20"><label style="font-size:13px;color:var(--sub)"><input type="checkbox" id="hasDns" checked> PC has DNS server set</label><label style="font-size:13px;color:var(--sub)"><input type="checkbox" id="hasHttp" checked> HTTP service ON</label><button class="btn p" id="urlGo">Open</button></div><div class="out" id="urlOut"></div></div>
+<div class="co tip">Test servers by IP first (<code>ping 10.0.0.80</code>) — if that works but the name fails, it's a DNS problem, not connectivity.</div><div class="sh">⌨ Packet Tracer CLI commands</div><div class="cli"><div class="ch"><span>⌨ Router as DNS client</span><button class="btn cp">Copy</button></div><pre>enable
+configure terminal
+ip domain-lookup
+ip name-server 10.0.0.53
+ip domain-name school.lk
+<span class="cm">! static host table entry</span>
+ip host WEB 10.0.0.80
+end
+show hosts
+ping www.school.lk</pre></div><div class="cli"><div class="ch"><span>⌨ PC: Command Prompt</span><button class="btn cp">Copy</button></div><pre>nslookup www.school.lk
+ping www.school.lk
+tracert www.school.lk</pre></div></section>
+<section class="section" id="t13"><div class="k"><div class="nb" style="background:#F09300">13</div><h2>Access Control Lists (ACLs)</h2></div>
+<p>An ACL is an ordered list of permit/deny rules. Packets are checked <b>top-down</b>; first match wins; an invisible <b>implicit deny any</b> sits at the end. The <b>wildcard mask</b> is the inverse of a subnet mask (0 = must match, 1 = ignore): /24 → <code>0.0.0.255</code>.</p><div class="si-divider"><button class="si-toggle" data-target="si-t13" aria-expanded="false"><span class="flag">🇱🇰</span> සිංහල <span class="arrow">▾</span></button></div><div class="si-panel" id="si-t13"><span class="si-label">සිංහල පරිවර්තනය</span><p><b>ACL</b> යනු permit/deny නීති ලැයිස්තුවකි. Packet එක ඉහළ සිට පහළට පරීක්ෂා වන අතර පළමු ගැලපීම ක්‍රියාත්මක වේ; අවසානයේ නොපෙනෙන <b>implicit deny any</b> ඇත. Wildcard mask යනු subnet mask එකේ ප්‍රතිවිරුද්ධයයි (0 = ගැලපිය යුතුයි, 1 = නොසලකන්න); /24 → 0.0.0.255.</p><p><b>Standard ACL</b> (1–99) source IP පමණක් පෙරහන් කරන අතර destination ළඟ තබයි; <b>Extended ACL</b> (100–199) source, destination, protocol, port පෙරහන් කරන අතර source ළඟ තබයි. අවසානයේ <code>permit ip any any</code> නොතැබුවහොත් අනෙක් සියල්ල අවහිර වේ.</p></div>
+<div class="tw"><table><tr><th>Type</th><th>Numbers</th><th>Filters on</th><th>Place</th></tr><tr><td>Standard</td><td>1–99</td><td>Source IP only</td><td>Close to <b>destination</b></td></tr><tr><td>Extended</td><td>100–199</td><td>Src, dst, protocol, port</td><td>Close to <b>source</b></td></tr></table></div>
+
+<div class="sh">Packet tester for ACL 101</div>
+<div class="lab"><div class="out" id="aclRules" style="color:#e8eaed"></div>
+<div class="row"><input type="text" id="aS" value="192.168.1.20" size="14"><span>→</span><input type="text" id="aD" value="10.0.0.80" size="14"><select id="aP"><option value="tcp">tcp</option><option value="udp">udp</option><option value="icmp">icmp</option></select><input type="text" id="aPort" value="80" size="5"><button class="btn p" id="aGo">Test</button></div><div class="out" id="aOut"></div></div>
+<div class="co warn">Forgetting the final <code>permit ip any any</code> blocks everything else. Standard ACLs placed too close to the source can block legitimate traffic.</div><div class="sh">⌨ Packet Tracer CLI commands</div><div class="cli"><div class="ch"><span>⌨ Standard ACL (source only, place near destination)</span><button class="btn cp">Copy</button></div><pre>enable
+configure terminal
+access-list 10 permit 192.168.1.0 0.0.0.255
+interface g0/1
+ip access-group 10 out
+end</pre></div><div class="cli"><div class="ch"><span>⌨ Extended numbered ACL (place near source)</span><button class="btn cp">Copy</button></div><pre>configure terminal
+access-list 101 deny tcp 192.168.1.0 0.0.0.255 host 10.0.0.80 eq 80
+access-list 101 permit ip 192.168.1.0 0.0.0.255 any
+interface g0/0
+ip access-group 101 in
+end</pre></div><div class="cli"><div class="ch"><span>⌨ Named ACL, edit by sequence number</span><button class="btn cp">Copy</button></div><pre>configure terminal
+ip access-list extended BLOCK-WEB
+remark Block HTTP to web server
+deny tcp 192.168.1.0 0.0.0.255 host 10.0.0.80 eq 80
+permit ip any any
+exit
+interface g0/0
+ip access-group BLOCK-WEB in
+exit
+<span class="cm">! remove a line, then insert a new one</span>
+ip access-list extended BLOCK-WEB
+no 20
+15 deny tcp any host 10.0.0.80 eq 443
+end</pre></div><div class="cli"><div class="ch"><span>⌨ Restrict remote access to one admin PC</span><button class="btn cp">Copy</button></div><pre>configure terminal
+access-list 5 permit host 192.168.1.20
+line vty 0 4
+access-class 5 in
+end</pre></div><div class="cli"><div class="ch"><span>⌨ Verify &amp; remove</span><button class="btn cp">Copy</button></div><pre>show access-lists
+show ip interface g0/0
+clear access-list counters
+configure terminal
+interface g0/0
+no ip access-group 101 in
+exit
+no access-list 101</pre></div></section>
+<section class="section" id="t14"><div class="k"><div class="nb" style="background:#7B61FF">14</div><h2>NAT &amp; PAT</h2></div>
+<p>Private addresses (192.168.x.x) can't cross the Internet. <b>NAT</b> rewrites them to a public address. <b>PAT</b> (NAT overload) lets many private hosts share <i>one</i> public IP by using different port numbers.</p><div class="si-divider"><button class="si-toggle" data-target="si-t14" aria-expanded="false"><span class="flag">🇱🇰</span> සිංහල <span class="arrow">▾</span></button></div><div class="si-panel" id="si-t14"><span class="si-label">සිංහල පරිවර්තනය</span><p>Private address (192.168.x.x) අන්තර්ජාලයට යා නොහැකි නිසා <b>NAT</b> මගින් ඒවා public address බවට පරිවර්තනය කරයි. <b>PAT</b> (NAT overload) මගින් බොහෝ private hosts එක public IP එකක් port අංක වෙනස් කර බෙදා ගනී.</p><p>Inside interface එකට <code>ip nat inside</code> ද, outside interface එකට <code>ip nat outside</code> ද දිය යුතුය. Server එකක් පිටතට ලබාදීමට static NAT භාවිත කරයි. පරීක්ෂාවට <code>show ip nat translations</code> භාවිත කරන්න.</p></div>
+
+<div class="sh">Click a host to send traffic to the Internet</div>
+<div class="lab"><div class="row" id="natH"></div><div class="tw"><table id="natT"><tr><th>Inside local</th><th>Inside global</th><th>Outside global</th></tr></table></div><div class="row"><button class="btn" id="natClr">Clear table</button><span style="color:var(--sub);font-size:13px">Public IP (router): 203.0.113.2</span></div></div>
+<div class="co tip">Verify with <code>show ip nat translations</code> and <code>show ip nat statistics</code>.</div><div class="sh">⌨ Packet Tracer CLI commands</div><div class="cli"><div class="ch"><span>⌨ Mark inside / outside interfaces</span><button class="btn cp">Copy</button></div><pre>enable
+configure terminal
+interface g0/0
+ip nat inside
+exit
+interface s0/0/0
+ip nat outside
+end</pre></div><div class="cli"><div class="ch"><span>⌨ PAT (NAT overload) - many hosts, one public IP</span><button class="btn cp">Copy</button></div><pre>configure terminal
+access-list 1 permit 192.168.1.0 0.0.0.255
+ip nat inside source list 1 interface s0/0/0 overload
+end</pre></div><div class="cli"><div class="ch"><span>⌨ Static NAT (publish a server)</span><button class="btn cp">Copy</button></div><pre>configure terminal
+ip nat inside source static 192.168.1.10 203.0.113.10
+end</pre></div><div class="cli"><div class="ch"><span>⌨ Dynamic NAT with a pool</span><button class="btn cp">Copy</button></div><pre>configure terminal
+ip nat pool PUBLIC 203.0.113.10 203.0.113.20 netmask 255.255.255.0
+access-list 1 permit 192.168.1.0 0.0.0.255
+ip nat inside source list 1 pool PUBLIC
+end</pre></div><div class="cli"><div class="ch"><span>⌨ Verify &amp; debug</span><button class="btn cp">Copy</button></div><pre>show ip nat translations
+show ip nat statistics
+clear ip nat translation *
+debug ip nat
+undebug all</pre></div></section>
+<section class="section" id="t15"><div class="k"><div class="nb" style="background:#EA4335">15</div><h2>OSPF — Dynamic Routing</h2></div>
+<p>OSPF routers discover neighbours, share link states and each compute the shortest path. <b>Cost = 100 Mbps ÷ interface bandwidth</b> (reference bandwidth, min 1). The path with the lowest <b>total</b> cost wins. Routers must share an <b>area</b> (use area 0).</p><div class="si-divider"><button class="si-toggle" data-target="si-t15" aria-expanded="false"><span class="flag">🇱🇰</span> සිංහල <span class="arrow">▾</span></button></div><div class="si-panel" id="si-t15"><span class="si-label">සිංහල පරිවර්තනය</span><p><b>OSPF</b> යනු link-state dynamic routing protocol එකකි; routers එකිනෙකා neighbours සොයා ගෙන ජාල තොරතුරු බෙදාගෙන කෙටිම මාර්ගය ගණනය කරයි. Cost = 100 Mbps ÷ interface bandwidth; මුළු cost අඩුම මාර්ගය තෝරා ගැනේ. Routers එකම area එකක් (area 0) භාවිත කළ යුතුය.</p><p>Neighbour state <b>Full</b> වන විට databases සමමුහුර්ත වී ඇත. Hello/dead timers, area හෝ subnet නොගැලපෙන්නේ නම් neighbours සෑදෙන්නේ නැත. පෙරනිමි 100 Mbps reference bandwidth නිසා 100M, 1G, 10G සියල්ලට cost 1 වේ; <code>auto-cost reference-bandwidth</code> මගින් එය නිවැරදි කරන්න.</p></div>
+
+<div class="sh">Path cost comparison — set link speeds</div>
+<div class="lab"><div class="tw"><table id="oT"></table></div><div class="out" id="oOut" style="color:#a8c7fa"></div></div>
+<div class="tw"><table><tr><th>Neighbour state</th><th>Meaning</th></tr><tr><td>Down → Init</td><td>Hello seen / heard</td></tr><tr><td>2-Way</td><td>Mutual hello; DR/BDR elected on multi-access</td></tr><tr><td>ExStart → Exchange → Loading</td><td>Database swap</td></tr><tr><td>Full</td><td>Adjacent, databases synchronised</td></tr></table></div>
+<div class="co">Check: <code>show ip ospf neighbor</code>, <code>show ip route ospf</code> (routes flagged <b>O</b>). Neighbours won't form if hello/dead timers, area or subnet don't match.</div>
+<div class="sh">⌨ Packet Tracer CLI commands</div><div class="cli"><div class="ch"><span>⌨ Enable OSPF</span><button class="btn cp">Copy</button></div><pre>enable
+configure terminal
+router ospf 1
+router-id 1.1.1.1
+network 192.168.1.0 0.0.0.255 area 0
+network 10.0.12.0 0.0.0.3 area 0
+<span class="cm">! do not send hellos toward the LAN</span>
+passive-interface g0/0
+<span class="cm">! share a default route</span>
+default-information originate
+end</pre></div><div class="cli"><div class="ch"><span>⌨ Tune cost and timers</span><button class="btn cp">Copy</button></div><pre>configure terminal
+router ospf 1
+<span class="cm">! set the same value on every router</span>
+auto-cost reference-bandwidth 10000
+exit
+interface s0/0/0
+ip ospf cost 10
+ip ospf hello-interval 10
+ip ospf dead-interval 40
+end</pre></div><div class="cli"><div class="ch"><span>⌨ Verify</span><button class="btn cp">Copy</button></div><pre>show ip ospf neighbor
+show ip ospf interface
+show ip protocols
+show ip route ospf
+clear ip ospf process</pre></div></section>
+<section class="section" id="t16"><div class="k" style="cursor:pointer" id="vocabHead"><div class="nb" style="background:linear-gradient(135deg,#34A853,#1a73e8)">16</div><h2 style="flex:1">🇱🇰 Sinhala Vocabulary — දුෂ්කර වචන</h2><button class="btn" id="vocabBtn" aria-expanded="false">▾</button></div><div id="vocabBody" style="display:none"><p>Key English words from this guide, with Sinhala meanings and example sentences.</p><div class="vocab-grid"><div class="vocab-card"><div class="vocab-header"><span class="vocab-word">topology</span><span class="vocab-pos">noun</span></div><div class="vocab-body"><div class="vocab-meanings"><div class="vocab-en"><span class="vocab-lang-label">🇬🇧 English</span><p>The layout showing how devices in a network are connected.</p></div><div class="vocab-si"><span class="vocab-lang-label">🇱🇰 සිංහල</span><p>ජාලයේ උපාංග සම්බන්ධ වී ඇති සැලැස්ම හෝ හැඩය</p></div></div><div class="vocab-sentences-head">Sample Sentences</div><ul class="vocab-sentences"><li><span class="vocab-tag tag-daily">Daily</span><span>Our school's bus routes form a star <b>topology</b> around the town centre.</span></li><li><span class="vocab-tag tag-net">Net</span><span>A star <b>topology</b> connects every PC to one central switch.</span></li><li><span class="vocab-tag tag-sw">Software</span><span>Draw the <b>topology</b> in Packet Tracer before you configure anything.</span></li></ul></div></div><div class="vocab-card"><div class="vocab-header"><span class="vocab-word">protocol</span><span class="vocab-pos">noun</span></div><div class="vocab-body"><div class="vocab-meanings"><div class="vocab-en"><span class="vocab-lang-label">🇬🇧 English</span><p>An agreed set of rules that devices follow to communicate.</p></div><div class="vocab-si"><span class="vocab-lang-label">🇱🇰 සිංහල</span><p>උපාංග අතර සන්නිවේදනය සඳහා පිළිගත් නීති සමූහයක්</p></div></div><div class="vocab-sentences-head">Sample Sentences</div><ul class="vocab-sentences"><li><span class="vocab-tag tag-daily">Daily</span><span>Visitors must follow the school's security <b>protocol</b> at the gate.</span></li><li><span class="vocab-tag tag-net">Net</span><span>HTTP and DNS are application-layer <b>protocols</b>.</span></li><li><span class="vocab-tag tag-cyber">Cyber</span><span>Telnet is a weak <b>protocol</b> because it sends passwords in plain text.</span></li></ul></div></div><div class="vocab-card"><div class="vocab-header"><span class="vocab-word">encapsulation</span><span class="vocab-pos">noun</span></div><div class="vocab-body"><div class="vocab-meanings"><div class="vocab-en"><span class="vocab-lang-label">🇬🇧 English</span><p>Wrapping data with a header (and trailer) at each layer.</p></div><div class="vocab-si"><span class="vocab-lang-label">🇱🇰 සිංහල</span><p>දත්ත වටා header එකක් එකතු කර ඇසුරුම් කිරීම</p></div></div><div class="vocab-sentences-head">Sample Sentences</div><ul class="vocab-sentences"><li><span class="vocab-tag tag-daily">Daily</span><span>Putting a letter in an envelope and then in a parcel is like <b>encapsulation</b>.</span></li><li><span class="vocab-tag tag-net">Net</span><span>A segment becomes a packet, then a frame, through <b>encapsulation</b>.</span></li><li><span class="vocab-tag tag-sw">Software</span><span>Simulation mode lets you inspect each layer added during <b>encapsulation</b>.</span></li></ul></div></div><div class="vocab-card"><div class="vocab-header"><span class="vocab-word">broadcast</span><span class="vocab-pos">noun</span></div><div class="vocab-body"><div class="vocab-meanings"><div class="vocab-en"><span class="vocab-lang-label">🇬🇧 English</span><p>A message sent to every device in the same network.</p></div><div class="vocab-si"><span class="vocab-lang-label">🇱🇰 සිංහල</span><p>ජාලයේ සිටින සියලු උපාංගවලට එකවර යවන පණිවිඩයක්</p></div></div><div class="vocab-sentences-head">Sample Sentences</div><ul class="vocab-sentences"><li><span class="vocab-tag tag-daily">Daily</span><span>The principal made a <b>broadcast</b> over the school speakers.</span></li><li><span class="vocab-tag tag-net">Net</span><span>A DHCP Discover is a <b>broadcast</b> to 255.255.255.255.</span></li><li><span class="vocab-tag tag-cyber">Cyber</span><span>Too many <b>broadcast</b> packets can slow down or flood a network.</span></li></ul></div></div><div class="vocab-card"><div class="vocab-header"><span class="vocab-word">gateway</span><span class="vocab-pos">noun</span></div><div class="vocab-body"><div class="vocab-meanings"><div class="vocab-en"><span class="vocab-lang-label">🇬🇧 English</span><p>The router address a device uses to reach other networks.</p></div><div class="vocab-si"><span class="vocab-lang-label">🇱🇰 සිංහල</span><p>එක් ජාලයක සිට වෙනත් ජාලයකට යාමට ඇති දොරටුව (router ලිපිනය)</p></div></div><div class="vocab-sentences-head">Sample Sentences</div><ul class="vocab-sentences"><li><span class="vocab-tag tag-daily">Daily</span><span>The main <b>gateway</b> is the only way into the campus.</span></li><li><span class="vocab-tag tag-net">Net</span><span>Set the PC's default <b>gateway</b> to 192.168.1.1.</span></li><li><span class="vocab-tag tag-sw">Software</span><span>Without a <b>gateway</b>, your ping to another network will fail.</span></li></ul></div></div><div class="vocab-card"><div class="vocab-header"><span class="vocab-word">subnet</span><span class="vocab-pos">noun</span></div><div class="vocab-body"><div class="vocab-meanings"><div class="vocab-en"><span class="vocab-lang-label">🇬🇧 English</span><p>A smaller network created by dividing a larger network.</p></div><div class="vocab-si"><span class="vocab-lang-label">🇱🇰 සිංහල</span><p>විශාල ජාලයක් බෙදා සාදන කුඩා ජාලයක්</p></div></div><div class="vocab-sentences-head">Sample Sentences</div><ul class="vocab-sentences"><li><span class="vocab-tag tag-daily">Daily</span><span>Each floor of the office has its own <b>subnet</b>.</span></li><li><span class="vocab-tag tag-net">Net</span><span>192.168.1.0/26 is a <b>subnet</b> of 192.168.1.0/24.</span></li><li><span class="vocab-tag tag-cyber">Cyber</span><span>Placing servers in a separate <b>subnet</b> limits how far an attacker can spread.</span></li></ul></div></div><div class="vocab-card"><div class="vocab-header"><span class="vocab-word">lease</span><span class="vocab-pos">noun</span></div><div class="vocab-body"><div class="vocab-meanings"><div class="vocab-en"><span class="vocab-lang-label">🇬🇧 English</span><p>The time a device may keep an address given to it.</p></div><div class="vocab-si"><span class="vocab-lang-label">🇱🇰 සිංහල</span><p>ලිපිනයක් තාවකාලිකව භාවිතයට ලැබෙන කාලය</p></div></div><div class="vocab-sentences-head">Sample Sentences</div><ul class="vocab-sentences"><li><span class="vocab-tag tag-daily">Daily</span><span>We signed a one-year <b>lease</b> on the apartment.</span></li><li><span class="vocab-tag tag-net">Net</span><span>A DHCP <b>lease</b> of 7 days means the PC renews its address weekly.</span></li><li><span class="vocab-tag tag-sw">Software</span><span>Use <code>ipconfig /renew</code> to ask for a new <b>lease</b>.</span></li></ul></div></div><div class="vocab-card"><div class="vocab-header"><span class="vocab-word">bandwidth</span><span class="vocab-pos">noun</span></div><div class="vocab-body"><div class="vocab-meanings"><div class="vocab-en"><span class="vocab-lang-label">🇬🇧 English</span><p>The maximum amount of data that can be sent per second.</p></div><div class="vocab-si"><span class="vocab-lang-label">🇱🇰 සිංහල</span><p>තත්පරයකදී යැවිය හැකි උපරිම දත්ත ප්‍රමාණය</p></div></div><div class="vocab-sentences-head">Sample Sentences</div><ul class="vocab-sentences"><li><span class="vocab-tag tag-daily">Daily</span><span>Video calls need more <b>bandwidth</b> than text chats.</span></li><li><span class="vocab-tag tag-net">Net</span><span>OSPF cost is calculated from interface <b>bandwidth</b>.</span></li><li><span class="vocab-tag tag-hw">Hardware</span><span>A Gigabit port has ten times the <b>bandwidth</b> of a Fast Ethernet port.</span></li></ul></div></div><div class="vocab-card"><div class="vocab-header"><span class="vocab-word">trunk</span><span class="vocab-pos">noun</span></div><div class="vocab-body"><div class="vocab-meanings"><div class="vocab-en"><span class="vocab-lang-label">🇬🇧 English</span><p>A link that carries traffic for several VLANs at once.</p></div><div class="vocab-si"><span class="vocab-lang-label">🇱🇰 සිංහල</span><p>VLAN කිහිපයක් එකවර රැගෙන යන සම්බන්ධතාවය</p></div></div><div class="vocab-sentences-head">Sample Sentences</div><ul class="vocab-sentences"><li><span class="vocab-tag tag-daily">Daily</span><span>The <b>trunk</b> road carries buses from many villages.</span></li><li><span class="vocab-tag tag-net">Net</span><span>A <b>trunk</b> port tags frames with 802.1Q so VLANs stay separate.</span></li><li><span class="vocab-tag tag-hw">Hardware</span><span>Connect two switches with a <b>trunk</b> on their Gigabit ports.</span></li></ul></div></div><div class="vocab-card"><div class="vocab-header"><span class="vocab-word">redundancy</span><span class="vocab-pos">noun</span></div><div class="vocab-body"><div class="vocab-meanings"><div class="vocab-en"><span class="vocab-lang-label">🇬🇧 English</span><p>Having a spare path or device in case one fails.</p></div><div class="vocab-si"><span class="vocab-lang-label">🇱🇰 සිංහල</span><p>එකක් අසාර්ථක වුවහොත් ආදේශ වීමට අමතර විකල්පයක් තිබීම</p></div></div><div class="vocab-sentences-head">Sample Sentences</div><ul class="vocab-sentences"><li><span class="vocab-tag tag-daily">Daily</span><span>The hospital has a backup generator for <b>redundancy</b>.</span></li><li><span class="vocab-tag tag-net">Net</span><span>A floating static route gives <b>redundancy</b> for a failed link.</span></li><li><span class="vocab-tag tag-cyber">Cyber</span><span>Good <b>redundancy</b> helps a service survive an attack or outage.</span></li></ul></div></div><div class="vocab-card"><div class="vocab-header"><span class="vocab-word">convergence</span><span class="vocab-pos">noun</span></div><div class="vocab-body"><div class="vocab-meanings"><div class="vocab-en"><span class="vocab-lang-label">🇬🇧 English</span><p>When all routers agree on the same view of the network.</p></div><div class="vocab-si"><span class="vocab-lang-label">🇱🇰 සිංහල</span><p>සියලු routers එකම ජාල තොරතුරු වලට එකඟ වීමේ තත්වය</p></div></div><div class="vocab-sentences-head">Sample Sentences</div><ul class="vocab-sentences"><li><span class="vocab-tag tag-daily">Daily</span><span>After a long meeting the team reached <b>convergence</b> on one plan.</span></li><li><span class="vocab-tag tag-net">Net</span><span>OSPF <b>convergence</b> is fast after a link goes down.</span></li><li><span class="vocab-tag tag-sw">Software</span><span>Wait for <b>convergence</b> before you test your pings.</span></li></ul></div></div><div class="vocab-card"><div class="vocab-header"><span class="vocab-word">translation</span><span class="vocab-pos">noun</span></div><div class="vocab-body"><div class="vocab-meanings"><div class="vocab-en"><span class="vocab-lang-label">🇬🇧 English</span><p>Changing something from one form into another.</p></div><div class="vocab-si"><span class="vocab-lang-label">🇱🇰 සිංහල</span><p>එක් ආකාරයකින් තවත් ආකාරයකට පරිවර්තනය කිරීම</p></div></div><div class="vocab-sentences-head">Sample Sentences</div><ul class="vocab-sentences"><li><span class="vocab-tag tag-daily">Daily</span><span>The Sinhala <b>translation</b> helps new learners follow the lesson.</span></li><li><span class="vocab-tag tag-net">Net</span><span>NAT <b>translation</b> maps private addresses to a public address.</span></li><li><span class="vocab-tag tag-sw">Software</span><span>Check the <b>translation</b> table with <code>show ip nat translations</code>.</span></li></ul></div></div></div></div></section>
+<section class="section" id="t17"><div class="k"><div class="nb" style="background:#34A853">17</div><h2>CLI Cheat Sheet</h2></div><p>Quick reference for Packet Tracer. Type to filter; click a command to copy it.</p><div class="row"><input type="text" id="csFilter" placeholder="Filter e.g. vlan, ospf, show…" style="flex:1;min-width:220px"><span id="csCount" style="color:var(--sub);font-size:13px"></span></div><div class="tw"><table id="csTbl"><tr><th>Command</th><th>Mode</th><th>Purpose</th></tr><tr class="cat"><td colspan="3">Modes &amp; navigation</td></tr><tr class="cr"><td><code>enable</code></td><td>User</td><td>Enter privileged EXEC</td></tr><tr class="cr"><td><code>configure terminal</code></td><td>Priv</td><td>Enter global configuration (conf t)</td></tr><tr class="cr"><td><code>interface g0/0</code></td><td>Config</td><td>Enter interface mode</td></tr><tr class="cr"><td><code>interface range fa0/1 - 4</code></td><td>Config</td><td>Configure several ports at once</td></tr><tr class="cr"><td><code>line vty 0 4</code></td><td>Config</td><td>Configure remote-access lines</td></tr><tr class="cr"><td><code>exit</code></td><td>Any</td><td>Go back one mode</td></tr><tr class="cr"><td><code>end</code></td><td>Config</td><td>Return straight to privileged EXEC</td></tr><tr class="cr"><td><code>do show ip interface brief</code></td><td>Config</td><td>Run a show command from config mode</td></tr><tr class="cr"><td><code>?</code></td><td>Any</td><td>List available commands</td></tr><tr class="cat"><td colspan="3">Basic setup &amp; saving</td></tr><tr class="cr"><td><code>hostname R1</code></td><td>Config</td><td>Name the device</td></tr><tr class="cr"><td><code>no ip domain-lookup</code></td><td>Config</td><td>Stop typos being treated as DNS names</td></tr><tr class="cr"><td><code>enable secret Cisco123</code></td><td>Config</td><td>Encrypted privileged password</td></tr><tr class="cr"><td><code>service password-encryption</code></td><td>Config</td><td>Encrypt plain-text passwords</td></tr><tr class="cr"><td><code>banner motd #text#</code></td><td>Config</td><td>Login warning message</td></tr><tr class="cr"><td><code>copy running-config startup-config</code></td><td>Priv</td><td>Save configuration</td></tr><tr class="cr"><td><code>erase startup-config</code></td><td>Priv</td><td>Wipe saved configuration</td></tr><tr class="cr"><td><code>reload</code></td><td>Priv</td><td>Restart the device</td></tr><tr class="cat"><td colspan="3">Interfaces &amp; IP</td></tr><tr class="cr"><td><code>ip address 192.168.1.1 255.255.255.0</code></td><td>If</td><td>Set IPv4 address</td></tr><tr class="cr"><td><code>ip address dhcp</code></td><td>If</td><td>Get address via DHCP</td></tr><tr class="cr"><td><code>no shutdown</code></td><td>If</td><td>Enable the interface</td></tr><tr class="cr"><td><code>description LAN</code></td><td>If</td><td>Label an interface</td></tr><tr class="cr"><td><code>clock rate 64000</code></td><td>If</td><td>Set clock on the DCE serial end</td></tr><tr class="cat"><td colspan="3">Show &amp; verify</td></tr><tr class="cr"><td><code>show ip interface brief</code></td><td>Priv</td><td>Status and IP of all interfaces</td></tr><tr class="cr"><td><code>show running-config</code></td><td>Priv</td><td>Current configuration</td></tr><tr class="cr"><td><code>show startup-config</code></td><td>Priv</td><td>Saved configuration</td></tr><tr class="cr"><td><code>show version</code></td><td>Priv</td><td>IOS and hardware details</td></tr><tr class="cr"><td><code>show interfaces fa0/1</code></td><td>Priv</td><td>Detailed interface counters and status</td></tr><tr class="cr"><td><code>show cdp neighbors</code></td><td>Priv</td><td>Directly connected Cisco devices</td></tr><tr class="cr"><td><code>show mac address-table</code></td><td>Priv</td><td>Switch MAC table</td></tr><tr class="cr"><td><code>show arp</code></td><td>Priv</td><td>IP-to-MAC mappings</td></tr><tr class="cr"><td><code>ping 192.168.1.1</code></td><td>Priv</td><td>Test reachability</td></tr><tr class="cr"><td><code>traceroute 192.168.2.10</code></td><td>Priv</td><td>Show the path hop by hop</td></tr><tr class="cat"><td colspan="3">VLANs &amp; trunks</td></tr><tr class="cr"><td><code>vlan 10</code></td><td>Config</td><td>Create VLAN 10</td></tr><tr class="cr"><td><code>name SALES</code></td><td>Vlan</td><td>Name the VLAN</td></tr><tr class="cr"><td><code>switchport mode access</code></td><td>If</td><td>Make an access port</td></tr><tr class="cr"><td><code>switchport access vlan 10</code></td><td>If</td><td>Put the port in VLAN 10</td></tr><tr class="cr"><td><code>switchport mode trunk</code></td><td>If</td><td>Make a trunk port</td></tr><tr class="cr"><td><code>switchport trunk allowed vlan 10,20</code></td><td>If</td><td>Limit VLANs on the trunk</td></tr><tr class="cr"><td><code>encapsulation dot1Q 10</code></td><td>If</td><td>Sub-interface tag (router-on-a-stick)</td></tr><tr class="cr"><td><code>show vlan brief</code></td><td>Priv</td><td>VLANs and their ports</td></tr><tr class="cr"><td><code>show interfaces trunk</code></td><td>Priv</td><td>Trunk ports and allowed VLANs</td></tr><tr class="cat"><td colspan="3">Routing</td></tr><tr class="cr"><td><code>ip route 192.168.3.0 255.255.255.0 10.0.12.2</code></td><td>Config</td><td>Static route via next hop</td></tr><tr class="cr"><td><code>ip route 0.0.0.0 0.0.0.0 10.0.12.2</code></td><td>Config</td><td>Default route</td></tr><tr class="cr"><td><code>ip route 192.168.3.0 255.255.255.0 10.0.13.2 5</code></td><td>Config</td><td>Floating static route (AD 5)</td></tr><tr class="cr"><td><code>show ip route</code></td><td>Priv</td><td>Routing table</td></tr><tr class="cr"><td><code>show ip route connected</code></td><td>Priv</td><td>Connected networks only</td></tr><tr class="cr"><td><code>router ospf 1</code></td><td>Config</td><td>Start OSPF process</td></tr><tr class="cr"><td><code>network 192.168.1.0 0.0.0.255 area 0</code></td><td>Router</td><td>Advertise a network in OSPF</td></tr><tr class="cr"><td><code>passive-interface g0/0</code></td><td>Router</td><td>Stop hellos on an interface</td></tr><tr class="cr"><td><code>show ip ospf neighbor</code></td><td>Priv</td><td>OSPF neighbours and state</td></tr><tr class="cat"><td colspan="3">Services: DHCP &amp; DNS</td></tr><tr class="cr"><td><code>ip dhcp excluded-address 192.168.1.1 192.168.1.10</code></td><td>Config</td><td>Reserve addresses from the pool</td></tr><tr class="cr"><td><code>ip dhcp pool LAN1</code></td><td>Config</td><td>Create a DHCP pool</td></tr><tr class="cr"><td><code>network 192.168.1.0 255.255.255.0</code></td><td>DHCP</td><td>Pool network</td></tr><tr class="cr"><td><code>default-router 192.168.1.1</code></td><td>DHCP</td><td>Gateway given to clients</td></tr><tr class="cr"><td><code>dns-server 8.8.8.8</code></td><td>DHCP</td><td>DNS given to clients</td></tr><tr class="cr"><td><code>ip helper-address 10.0.0.5</code></td><td>If</td><td>Relay DHCP to another network</td></tr><tr class="cr"><td><code>show ip dhcp binding</code></td><td>Priv</td><td>Leased addresses</td></tr><tr class="cr"><td><code>ip name-server 10.0.0.53</code></td><td>Config</td><td>Set DNS server on a router</td></tr><tr class="cat"><td colspan="3">ACL &amp; NAT</td></tr><tr class="cr"><td><code>access-list 10 permit 192.168.1.0 0.0.0.255</code></td><td>Config</td><td>Standard ACL entry</td></tr><tr class="cr"><td><code>access-list 101 deny tcp any host 10.0.0.80 eq 80</code></td><td>Config</td><td>Extended ACL entry</td></tr><tr class="cr"><td><code>ip access-group 101 in</code></td><td>If</td><td>Apply ACL to an interface</td></tr><tr class="cr"><td><code>access-class 5 in</code></td><td>Line</td><td>Apply ACL to vty lines</td></tr><tr class="cr"><td><code>show access-lists</code></td><td>Priv</td><td>ACLs and hit counters</td></tr><tr class="cr"><td><code>ip nat inside</code></td><td>If</td><td>Mark the inside interface</td></tr><tr class="cr"><td><code>ip nat outside</code></td><td>If</td><td>Mark the outside interface</td></tr><tr class="cr"><td><code>ip nat inside source list 1 interface s0/0/0 overload</code></td><td>Config</td><td>PAT on the outside interface</td></tr><tr class="cr"><td><code>show ip nat translations</code></td><td>Priv</td><td>Active NAT entries</td></tr><tr class="cat"><td colspan="3">PC Command Prompt</td></tr><tr class="cr"><td><code>ipconfig /all</code></td><td>PC</td><td>Full IP details</td></tr><tr class="cr"><td><code>ipconfig /renew</code></td><td>PC</td><td>Ask DHCP for a new lease</td></tr><tr class="cr"><td><code>ping 192.168.1.1</code></td><td>PC</td><td>Test reachability</td></tr><tr class="cr"><td><code>tracert 192.168.2.10</code></td><td>PC</td><td>Trace the path</td></tr><tr class="cr"><td><code>arp -a</code></td><td>PC</td><td>ARP cache</td></tr><tr class="cr"><td><code>nslookup www.school.lk</code></td><td>PC</td><td>Resolve a name via DNS</td></tr></table></div><div class="co tip"><b>Modes:</b> User <code>&gt;</code> → Priv <code>#</code> → Config <code>(config)#</code> → If <code>(config-if)#</code> / Line / Router / DHCP / Vlan. Replace example addresses with your own.</div></section><section class="section" id="t18"><div class="k"><div class="nb" style="background:#F09300">18</div><h2>Calculation Practice — Subnetting, VLAN &amp; VLSM</h2></div><p>Try each question on paper first, then open the answer. You can check results with the calculators in topics 4, 5 and 10.</p><div class="row"><button class="btn p" id="ansAll">Show all answers</button></div><div class="qcard"><div class="qhead"><span class="qtag">Subnetting</span><b>S1</b></div><p>Divide <b>192.168.10.0/24</b> into <b>8 equal subnets</b>. Find the new mask, block size, hosts per subnet, and the network, usable range and broadcast of <b>subnet 3</b>.</p><button class="btn ansbtn" aria-expanded="false">Show answer ▾</button><div class="ans">Borrow 3 bits (2³ = 8) → <b>/27</b> = 255.255.255.224.<br>Block size = 256 − 224 = <b>32</b>; hosts = 2⁵ − 2 = <b>30</b>.<br>Subnet 3 starts at 2 × 32 = 64 → network <b>192.168.10.64/27</b>, usable <b>.65 – .94</b>, broadcast <b>192.168.10.95</b>.</div></div><div class="qcard"><div class="qhead"><span class="qtag">Subnetting</span><b>S2</b></div><p>Host <b>172.16.45.200/20</b>: find the subnet mask, network address, broadcast address and number of usable hosts.</p><button class="btn ansbtn" aria-expanded="false">Show answer ▾</button><div class="ans">/20 → mask <b>255.255.240.0</b>; block size in the 3rd octet = 16.<br>45 ÷ 16 → 2 × 16 = 32 → network <b>172.16.32.0/20</b>.<br>Broadcast = next network (172.16.48.0) − 1 = <b>172.16.47.255</b>; usable 172.16.32.1 – 172.16.47.254.<br>Hosts = 2¹² − 2 = <b>4094</b>.</div></div><div class="qcard"><div class="qhead"><span class="qtag">Subnetting</span><b>S3</b></div><p>Host <b>10.10.10.130</b> with mask <b>255.255.255.192</b>: find the network, first host, last host, broadcast and usable hosts.</p><button class="btn ansbtn" aria-expanded="false">Show answer ▾</button><div class="ans">255.255.255.192 = /26; block size = 64. 130 → 2 × 64 = 128.<br>Network <b>10.10.10.128</b>, first host <b>.129</b>, last host <b>.190</b>, broadcast <b>10.10.10.191</b>.<br>Usable hosts = 2⁶ − 2 = <b>62</b>.</div></div><div class="qcard"><div class="qhead"><span class="qtag">Subnetting</span><b>S4</b></div><p>A network must hold <b>at least 500 hosts</b>. What is the smallest prefix length and its subnet mask?</p><button class="btn ansbtn" aria-expanded="false">Show answer ▾</button><div class="ans">Need 2<sup>h</sup> − 2 ≥ 500 → h = 9 (510 hosts; h = 8 gives only 254).<br>Prefix = 32 − 9 = <b>/23</b> → mask <b>255.255.254.0</b>.</div></div><div class="qcard"><div class="qhead"><span class="qtag">Subnetting</span><b>S5</b></div><p>With mask <b>255.255.255.192</b>, are <b>192.168.5.97</b> and <b>192.168.5.130</b> in the same subnet? Can they ping without a router?</p><button class="btn ansbtn" aria-expanded="false">Show answer ▾</button><div class="ans">Block size 64: .97 lies in <b>192.168.5.64/26</b> (64–127); .130 lies in <b>192.168.5.128/26</b> (128–191).<br><b>Different subnets</b> → they cannot communicate without a router (and correct gateways).</div></div><div class="qcard"><div class="qhead"><span class="qtag">Subnetting</span><b>S6</b></div><p>From <b>172.16.0.0/16</b> you need subnets of <b>100 hosts</b> each. Which prefix? How many such subnets are available?</p><button class="btn ansbtn" aria-expanded="false">Show answer ▾</button><div class="ans">100 hosts → 7 host bits (2⁷ − 2 = 126; 6 bits gives only 62) → <b>/25</b>.<br>Borrowed bits = 25 − 16 = 9 → 2⁹ = <b>512 subnets</b>.</div></div><div class="qcard"><div class="qhead"><span class="qtag">VLAN</span><b>V1</b></div><p>A 24-port switch (Fa0/1–Fa0/24) uses <b>Fa0/21–24</b> as trunks. The remaining ports are split <b>equally</b> among VLANs 10, 20, 30 and 40. (a) Ports per VLAN? (b) Give each VLAN's port range.</p><button class="btn ansbtn" aria-expanded="false">Show answer ▾</button><div class="ans">(a) 24 − 4 = 20 ports ÷ 4 VLANs = <b>5 ports per VLAN</b>.<br>(b) VLAN 10 → <code>fa0/1 - 5</code>; VLAN 20 → <code>fa0/6 - 10</code>; VLAN 30 → <code>fa0/11 - 15</code>; VLAN 40 → <code>fa0/16 - 20</code>.<br>Example: <code>interface range fa0/1 - 5</code> → <code>switchport mode access</code> → <code>switchport access vlan 10</code>.</div></div><div class="qcard"><div class="qhead"><span class="qtag">VLAN</span><b>V2</b></div><p>Use <b>192.168.50.0/24</b> with one <b>/27</b> per VLAN: VLAN 10 Sales (28 hosts), VLAN 20 HR (12), VLAN 30 IT (5). The router gateway is the <b>first usable</b> address of each subnet. Give the router-on-a-stick sub-interface addresses.</p><button class="btn ansbtn" aria-expanded="false">Show answer ▾</button><div class="ans">/27 holds 30 hosts, so it fits all three (28 ≤ 30). Subnets: .0, .32, .64.<br><code>g0/0.10</code> → <b>192.168.50.1</b> 255.255.255.224 (net 192.168.50.0/27)<br><code>g0/0.20</code> → <b>192.168.50.33</b> 255.255.255.224 (net 192.168.50.32/27)<br><code>g0/0.30</code> → <b>192.168.50.65</b> 255.255.255.224 (net 192.168.50.64/27)<br>Each needs <code>encapsulation dot1Q &lt;vlan-id&gt;</code>.</div></div><div class="qcard"><div class="qhead"><span class="qtag">VLAN</span><b>V3</b></div><p>All ports of a switch belong to VLANs 10, 20 and 30 (none in VLAN 1). (a) How many broadcast domains? (b) How many router sub-interfaces are needed for router-on-a-stick? (c) How many physical router interfaces are needed?</p><button class="btn ansbtn" aria-expanded="false">Show answer ▾</button><div class="ans">(a) One broadcast domain per VLAN = <b>3</b>.<br>(b) One sub-interface per VLAN = <b>3</b>.<br>(c) All three share one trunk link = <b>1 physical interface</b> (e.g. g0/0, split into g0/0.10, .20, .30).</div></div><div class="qcard"><div class="qhead"><span class="qtag">VLAN</span><b>V4</b></div><p>A trunk is set with <code>switchport trunk allowed vlan 10,20,30-33</code>. How many VLANs does it carry? How many VLAN IDs exist in total (1–4094)?</p><button class="btn ansbtn" aria-expanded="false">Show answer ▾</button><div class="ans">10, 20, 30, 31, 32, 33 → <b>6 VLANs</b> (the range 30-33 adds 4; 10 and 20 add 2).<br>Total VLAN IDs 1 – 4094 = <b>4094</b>.</div></div><div class="qcard"><div class="qhead"><span class="qtag">VLAN</span><b>V5</b></div><p>Each VLAN in <b>192.168.100.0/24</b> uses a <b>/26</b>. (a) Usable hosts per VLAN? (b) How many VLANs fit? (c) If VLAN 3 is the third subnet and the gateway is its first usable address, what is the gateway?</p><button class="btn ansbtn" aria-expanded="false">Show answer ▾</button><div class="ans">(a) 2⁶ − 2 = <b>62 hosts</b>.<br>(b) 2² = <b>4 VLANs</b> (.0, .64, .128, .192).<br>(c) Third subnet = <b>192.168.100.128/26</b> → gateway <b>192.168.100.129</b>.</div></div><div class="qcard"><div class="qhead"><span class="qtag">VLSM</span><b>M1</b></div><p>Allocate <b>192.168.20.0/24</b> with VLSM: LAN A 60 hosts, LAN B 28, LAN C 12, WAN1 2, WAN2 2. Give each network, mask, range and broadcast.</p><button class="btn ansbtn" aria-expanded="false">Show answer ▾</button><div class="ans">Sort largest → smallest, use the smallest block that fits (hosts + 2):<br><div class="tw"><table><tr><th>Need</th><th>Network</th><th>Mask</th><th>Usable range</th><th>Broadcast</th></tr><tr><td>60</td><td>192.168.20.0/26</td><td>255.255.255.192</td><td>192.168.20.1 – 192.168.20.62</td><td>192.168.20.63</td></tr><tr><td>28</td><td>192.168.20.64/27</td><td>255.255.255.224</td><td>192.168.20.65 – 192.168.20.94</td><td>192.168.20.95</td></tr><tr><td>12</td><td>192.168.20.96/28</td><td>255.255.255.240</td><td>192.168.20.97 – 192.168.20.110</td><td>192.168.20.111</td></tr><tr><td>2</td><td>192.168.20.112/30</td><td>255.255.255.252</td><td>192.168.20.113 – 192.168.20.114</td><td>192.168.20.115</td></tr><tr><td>2</td><td>192.168.20.116/30</td><td>255.255.255.252</td><td>192.168.20.117 – 192.168.20.118</td><td>192.168.20.119</td></tr></table></div></div></div><div class="qcard"><div class="qhead"><span class="qtag">VLSM</span><b>M2</b></div><p>Allocate <b>172.16.0.0/22</b> with VLSM for 400, 200, 100, 50 and 2 hosts.</p><button class="btn ansbtn" aria-expanded="false">Show answer ▾</button><div class="ans">400 needs 9 host bits (/23), 200 → /24, 100 → /25, 50 → /26, 2 → /30:<br><div class="tw"><table><tr><th>Need</th><th>Network</th><th>Mask</th><th>Usable range</th><th>Broadcast</th></tr><tr><td>400</td><td>172.16.0.0/23</td><td>255.255.254.0</td><td>172.16.0.1 – 172.16.1.254</td><td>172.16.1.255</td></tr><tr><td>200</td><td>172.16.2.0/24</td><td>255.255.255.0</td><td>172.16.2.1 – 172.16.2.254</td><td>172.16.2.255</td></tr><tr><td>100</td><td>172.16.3.0/25</td><td>255.255.255.128</td><td>172.16.3.1 – 172.16.3.126</td><td>172.16.3.127</td></tr><tr><td>50</td><td>172.16.3.128/26</td><td>255.255.255.192</td><td>172.16.3.129 – 172.16.3.190</td><td>172.16.3.191</td></tr><tr><td>2</td><td>172.16.3.192/30</td><td>255.255.255.252</td><td>172.16.3.193 – 172.16.3.194</td><td>172.16.3.195</td></tr></table></div>Everything fits inside the /22 (1024 addresses).</div></div><div class="qcard"><div class="qhead"><span class="qtag">VLSM</span><b>M3</b></div><p>(a) Do requirements of <b>120, 60, 30 and 14</b> hosts fit in a /24? (b) Do <b>130 and 60</b> hosts fit in a /24?</p><button class="btn ansbtn" aria-expanded="false">Show answer ▾</button><div class="ans">(a) Blocks: 128 (/25) + 64 (/26) + 32 (/27) + 16 (/28) = 240 ≤ 256 → <b>Yes</b>, with 16 addresses left over.<br>(b) 130 hosts needs 8 host bits (/24 = 256 addresses) → it uses the <b>whole</b> /24, leaving no room for the 60-host LAN (needs a /26) → <b>No</b>. Use a larger base network, e.g. a /23.</div></div></section><section class="section" id="t19"><div class="k"><div class="nb" style="background:#EA4335">19</div><h2>📝 MCQ Practice Test — 30 Questions</h2></div><p>Click an answer. Green = correct, red = wrong, and the explanation appears below.</p><div class="mcq-head"><b id="mcqScore">Score: 0 / 30</b><button class="btn" id="mcqReset">↺ Reset quiz</button></div><div id="mcqList"></div></section>
+<div class="nav2"><span>Packet Tracer CLI blocks contain commands only, so you can paste them straight into a device CLI tab.</span></div>
+</main></div>
+<script>
+(function(){
+
+const $=id=>document.getElementById(id);
+/* T1 zones */
+const Z=[["Workspace","The big canvas where you place and connect devices. Toggle Logical (topology) and Physical (buildings/racks) view top-left."],["Device palette","Bottom-left: categories (End Devices, Network Devices, Connections). Pick a category then a device type."],["Connections","The lightning-bolt icon picks cable types. 'Automatically Choose' is handy but teach yourself manual selection."],["Realtime / Simulation","Bottom-right tabs. Simulation mode steps packets one at a time with an Event List."],["PDU tools","Top-right toolbar: Select (arrow), Delete, Inspect, Add Simple PDU (closed envelope) and Complex PDU for quick ping tests."],["Device window","Double-click any device: Physical (add modules), Config (GUI), CLI (real IOS commands), Desktop (PC tools).`".replace("`","")]];
+$("zones").innerHTML=Z.map((z,i)=>`<button class="btn" data-i="${i}">${z[0]}</button>`).join("");
+$("zones").onclick=e=>{const b=e.target.closest("button");if(!b)return;[...$("zones").children].forEach(x=>x.classList.remove("on"));b.classList.add("on");$("zoneOut").textContent=Z[b.dataset.i][1]};
+/* T2 cables */
+const D=[["PC","g1"],["Laptop","g1"],["Server","g1"],["Router","g1"],["Switch","g2"],["Hub","g2"]];
+$("cA").innerHTML=$("cB").innerHTML=D.map((d,i)=>`<option value="${i}">${d[0]}</option>`).join("");$("cB").value=4;
+function cab(){const a=D[$("cA").value],b=D[$("cB").value];const same=a[1]===b[1];
+$("cOut").textContent=`${a[0]} ↔ ${b[0]}\n`+(same?"Use: COPPER CROSS-OVER (dashed line in PT)\nReason: both are in the same group (same transmit/receive pairs).":"Use: COPPER STRAIGHT-THROUGH (solid black line in PT)\nReason: different groups — transmit pins meet receive pins.")}
+$("cA").onchange=$("cB").onchange=cab;cab();
+/* T3 lab */
+const pcs={0:{},1:{}};let cur=0;
+const toN=s=>{const p=s.trim().split(".");if(p.length!==4||p.some(x=>!/^\d{1,3}$/.test(x)||+x>255))return null;return((+p[0]<<24)|(+p[1]<<16)|(+p[2]<<8)|+p[3])>>>0};
+const toS=n=>[24,16,8,0].map(s=>(n>>>s)&255).join(".");
+function pick(i){cur=i;$("sel").textContent="PC"+i;$("ip").value=pcs[i].ip||"";$("mk").value=pcs[i].mk||"255.255.255.0"}
+$("pc0").onclick=()=>pick(0);$("pc1").onclick=()=>pick(1);
+$("setBtn").onclick=()=>{const ip=toN($("ip").value),mk=toN($("mk").value);if(ip===null||mk===null){$("pingOut").textContent="Invalid IP or mask.";return}
+pcs[cur]={ip:$("ip").value.trim(),mk:$("mk").value.trim()};$("l"+cur).textContent=pcs[cur].ip;$("pingOut").textContent=`PC${cur} configured: ${pcs[cur].ip} / ${pcs[cur].mk}`};
+function ping(s,d){const a=pcs[s],b=pcs[d];let o=`C:\\> ping ${b.ip||"?"}\n`;
+if(!a.ip||!b.ip){$("pingOut").textContent=o+"Both PCs need an IP address first.";return}
+const an=toN(a.ip),bn=toN(b.ip),m=toN(a.mk);
+if((an&m)!==(bn&m)){$("pingOut").textContent=o+`Pinging ${b.ip} with 32 bytes of data:\n\nReply from ${a.ip}: Destination host unreachable.\nReply from ${a.ip}: Destination host unreachable.\n\n→ ${b.ip} is on a different network and PC${s} has no default gateway/router.`;return}
+if(an===bn){$("pingOut").textContent=o+"Duplicate IP addresses — conflict!";return}
+$("pingOut").textContent=o+`Pinging ${b.ip} with 32 bytes of data:\n\nRequest timed out.  (ARP resolving)\nReply from ${b.ip}: bytes=32 time<1ms TTL=128\nReply from ${b.ip}: bytes=32 time<1ms TTL=128\nReply from ${b.ip}: bytes=32 time<1ms TTL=128\n\nPackets: Sent = 4, Received = 3, Lost = 1 (25% loss)`}
+$("p01").onclick=()=>ping(0,1);$("p10").onclick=()=>ping(1,0);
+$("clr").onclick=()=>{pcs[0]={};pcs[1]={};$("l0").textContent=$("l1").textContent="not set";pick(0);$("pingOut").textContent="C:\\> "};pick(0);
+/* T4 bits */
+const W=[128,64,32,16,8,4,2,1];let B=[[1,1,0,0,0,0,0,0],[1,0,1,0,1,0,0,0],[0,0,0,0,0,0,0,1],[0,0,0,0,1,0,1,0]];
+function rb(){$("bits").innerHTML=B.map((o,i)=>`<div class="oct"><div>${o.map((v,j)=>`<button class="bit ${v?"one":""}" data-i="${i}" data-j="${j}">${v}</button>`).join("")}</div><div class="bw">${W.join(" ")}</div><div class="dec">${o.reduce((s,v,j)=>s+v*W[j],0)}</div></div>`).join("");
+const d=B.map(o=>o.reduce((s,v,j)=>s+v*W[j],0));$("ipOut").textContent=d.join(".");
+const f=d[0],c=f<128?"A":f<192?"B":f<224?"C":f<240?"D (multicast)":"E (experimental)";
+const priv=f===10||(f===172&&d[1]>=16&&d[1]<=31)||(f===192&&d[1]===168);
+$("ipInfo").textContent=`Class ${c}${f===127?" — loopback":""}\nType: ${priv?"Private (RFC 1918)":f===169&&d[1]===254?"APIPA (link-local)":"Public / other"}\nBinary: ${B.map(o=>o.join("")).join(".")}`}
+$("bits").onclick=e=>{const b=e.target.closest(".bit");if(!b)return;B[b.dataset.i][b.dataset.j]^=1;rb()};
+$("ipGo").onclick=()=>{const n=toN($("ipIn").value);if(n===null)return;B=[24,16,8,0].map(s=>W.map((w,j)=>((n>>>s)&255&w)?1:0));rb()};rb();
+/* T5 subnet */
+function sn(){let n=toN($("sIp").value),c=Math.min(30,Math.max(1,parseInt($("sCidr").value)||0));if(n===null)return;
+$("sRange").value=c;const m=c?(0xFFFFFFFF<<(32-c))>>>0:0,net=(n&m)>>>0,bc=(net|~m)>>>0,h=32-c;
+$("sBar").innerHTML=`<div style="width:${c/32*100}%;background:#8ab4f8">Network ${c}</div><div style="width:${h/32*100}%;background:#fdd663">Host ${h}</div>`;
+const kv=(k,v)=>`<div class="kv"><span>${k}</span><b>${v}</b></div>`;
+$("sGrid").innerHTML=kv("Subnet mask",toS(m))+kv("Wildcard",toS(~m>>>0))+kv("Network",toS(net))+kv("Broadcast",toS(bc))+kv("First host",toS(net+1))+kv("Last host",toS(bc-1))+kv("Usable hosts",(2**h-2).toLocaleString())+kv("Block size (octet)",h>=8?"256 step":2**(h%8||8));
+let o="";for(let i=c+1;i<=30;i++)o+=`<option value="${i}">${i}</option>`;const keep=$("sNew").value;$("sNew").innerHTML=o;if(keep&&+keep>c)$("sNew").value=keep;split()}
+function split(){const n=toN($("sIp").value),c=+$("sCidr").value,p=+$("sNew").value;if(!p||n===null){$("sTbl").innerHTML="";$("sCount").textContent="";return}
+const m=(0xFFFFFFFF<<(32-c))>>>0,net=(n&m)>>>0,cnt=2**(p-c),sz=2**(32-p),show=Math.min(cnt,16);
+$("sCount").textContent=`→ ${cnt} subnets × ${sz-2} hosts${cnt>16?" (first 16 shown)":""}`;
+let r="<tr><th>#</th><th>Network</th><th>First</th><th>Last</th><th>Broadcast</th></tr>";
+for(let i=0;i<show;i++){const a=net+i*sz;r+=`<tr><td>${i+1}</td><td>${toS(a)}/${p}</td><td>${toS(a+1)}</td><td>${toS(a+sz-2)}</td><td>${toS(a+sz-1)}</td></tr>`}$("sTbl").innerHTML=r}
+$("sIp").oninput=$("sCidr").oninput=sn;$("sRange").oninput=e=>{$("sCidr").value=e.target.value;sn()};$("sNew").onchange=split;sn();
+
+})();
+(function(){
+
+const $=id=>document.getElementById(id);
+const toN=s=>{const p=s.trim().split(".");if(p.length!==4||p.some(x=>!/^\d{1,3}$/.test(x)||+x>255))return null;return((+p[0]<<24)|(+p[1]<<16)|(+p[2]<<8)|+p[3])>>>0};
+const toS=n=>[24,16,8,0].map(s=>(n>>>s)&255).join(".");
+/* T6 */
+const LY=[["7","Application","Data","HTTP/DNS message the user's app creates","#8ab4f8"],["6","Presentation","Data","Encryption, compression, formats (JPEG, TLS)","#8ab4f8"],["5","Session","Data","Starts, manages and ends sessions","#8ab4f8"],["4","Transport","Segment","Adds TCP/UDP header: source/destination PORT numbers, reliability","#81c995"],["3","Network","Packet","Adds IP header: source/destination IP address. Routers work here","#fdd663"],["2","Data Link","Frame","Adds MAC addresses + FCS trailer. Switches work here","#f28b82"],["1","Physical","Bits","Electrical/light/radio signals on the cable. Hubs work here","#c58af9"]];
+$("layers").innerHTML=LY.map((l,i)=>`<div class="ly" data-i="${i}"><b>${l[0]}</b><span>${l[1]}</span><span style="margin-left:auto;color:var(--sub)">${l[2]}</span></div>`).join("");
+function ly(i){[...$("layers").children].forEach((c,j)=>c.classList.toggle("on",j===i));const l=LY[i];
+const parts=[["Data",0],["L4 hdr",3],["L3 hdr",4],["L2 hdr",5]].filter(p=>i>=p[1]||p[0]==="Data");
+let h="";if(i>=5)h+=`<div style="background:#f28b82">L2 hdr</div>`;if(i>=4)h+=`<div style="background:#fdd663">L3 hdr</div>`;if(i>=3)h+=`<div style="background:#81c995">L4 hdr</div>`;h+=`<div style="background:#8ab4f8;flex:1">DATA</div>`;if(i>=5)h+=`<div style="background:#f28b82">FCS</div>`;
+if(i===6)h=`<div style="background:#c58af9;flex:1;justify-content:center;letter-spacing:3px">1 0 1 1 0 0 1 0 1 1 1 0 …</div>`;
+$("pdu").innerHTML=h;$("lyOut").textContent=`Layer ${l[0]} — ${l[1]}\nPDU: ${l[2]}\n${l[3]}`}
+$("layers").onclick=e=>{const c=e.target.closest(".ly");if(c)ly(+c.dataset.i)};ly(3);
+/* T7 CLI */
+let mode=0,host="Router",iface="",ifs={},log="";const P=()=>[`${host}>`,`${host}#`,`${host}(config)#`,`${host}(config-if)#`][mode];
+function say(t){log+=t+"\n";$("cli").textContent=log;$("cli").scrollTop=1e5}
+function run(c){say(P()+" "+c);const a=c.trim().toLowerCase().split(/\s+/),w=a[0]||"";const is=(x,n)=>x&&x.startsWith(n)&&x.length>=Math.min(n.length,3)||x===n;
+if(w==="?"){say(["enable  exit  show  ping","configure  show  copy  ping  exit","hostname  interface  ip  exit  end","ip  no  shutdown  exit  end"][mode]);return}
+if(w==="en"||w==="enable"){if(mode===0)mode=1;else say("% Already privileged");return}
+if(w==="conf"||is(w,"configure")){if(mode===1){mode=2;say("Enter configuration commands, one per line. End with CNTL/Z.")}else say("% Invalid input detected");return}
+if(w==="exit"){mode=mode===3?2:mode===2?1:0;return}if(w==="end"||w==="disable"){mode=w==="end"?1:0;return}
+if(w==="hostname"&&mode===2&&a[1]){host=c.trim().split(/\s+/)[1];return}
+if((w==="int"||w==="interface")&&mode>=2&&a[1]){iface=a.slice(1).join("");ifs[iface]=ifs[iface]||{ip:"unassigned",up:false};mode=3;return}
+if(w==="ip"&&a[1]==="address"&&mode===3){if(toN(a[2]||"")===null||toN(a[3]||"")===null)say("% Invalid input detected");else ifs[iface].ip=a[2]+" "+a[3];return}
+if(w==="no"&&a[1]==="shutdown"&&mode===3){ifs[iface].up=true;say(`%LINK-5-CHANGED: Interface ${iface}, changed state to up`);return}
+if(w==="shutdown"&&mode===3){ifs[iface].up=false;return}
+if(w==="copy"&&mode===1){say("Destination filename [startup-config]?\nBuilding configuration...\n[OK]");return}
+if(w.startsWith("sh")&&mode>=1){const x=a.slice(1).join(" ");
+if(/^ip int/.test(x)){say("Interface          IP-Address      Status");Object.keys(ifs).forEach(k=>say(k.padEnd(19)+(ifs[k].ip.split(" ")[0]).padEnd(16)+(ifs[k].up?"up":"administratively down")));if(!Object.keys(ifs).length)say("(no interfaces configured yet)")}
+else if(/^run/.test(x)){say(`hostname ${host}`);Object.keys(ifs).forEach(k=>{say(`interface ${k}\n ip address ${ifs[k].ip}\n ${ifs[k].up?"no shutdown":"shutdown"}`)})}else say("% Incomplete or unsupported in this mini CLI");return}
+say(w?"% Invalid input detected at '^' marker.":"")}
+$("cmdGo").onclick=()=>{run($("cmd").value);$("cmd").value=""};$("cmd").onkeydown=e=>{if(e.key==="Enter")$("cmdGo").click()};say("Press RETURN to get started!\n");
+/* T8 */
+const RT=[["C","192.168.1.0","24","directly connected G0/0"],["S","10.0.0.0","8","via 192.168.1.2"],["S","10.1.0.0","16","via 192.168.1.3"],["S","0.0.0.0","0","via 192.168.1.254 (default)"]];
+$("rt").innerHTML="<tr><th>Code</th><th>Network</th><th>Prefix</th><th>Next hop / exit</th></tr>"+RT.map(r=>`<tr id="r${r[1]}${r[2]}"><td>${r[0]}</td><td>${r[1]}</td><td>/${r[2]}</td><td>${r[3]}</td></tr>`).join("");
+$("dstGo").onclick=()=>{const d=toN($("dst").value);if(d===null){$("rtOut").textContent="Invalid IP";return}
+[...$("rt").querySelectorAll("tr")].forEach(t=>t.style.background="");let best=null;
+RT.forEach(r=>{const p=+r[2],m=p?(0xFFFFFFFF<<(32-p))>>>0:0;if(((d&m)>>>0)===toN(r[1])&&(!best||p>+best[2]))best=r});
+if(best){$("r"+best[1]+best[2]).style.background="#2a3a55";$("rtOut").textContent=`Matches: ${best[1]}/${best[2]} (longest prefix)\nForward ${best[3]}`}};$("dstGo").click();
+/* T9 */
+const H=[["PC0","Fa0/1"],["PC1","Fa0/2"],["PC2","Fa0/3"],["PC3","Fa0/4"]],V=[10,10,20,20];
+$("vl").innerHTML=H.map((h,i)=>`<div class="port"><b>${h[0]}</b> · ${h[1]}<select data-i="${i}"><option value="1">VLAN 1 (default)</option><option value="10">VLAN 10 SALES</option><option value="20">VLAN 20 HR</option></select></div>`).join("");
+[...$("vl").querySelectorAll("select")].forEach((s,i)=>{s.value=V[i];s.onchange=()=>V[i]=+s.value});
+$("va").innerHTML=$("vb").innerHTML=H.map((h,i)=>`<option value="${i}">${h[0]}</option>`).join("");$("vb").value=2;
+$("vGo").onclick=()=>{const a=+$("va").value,b=+$("vb").value;$("vOut").textContent=a===b?"Pick two different PCs.":V[a]===V[b]?`✅ ${H[a][0]} → ${H[b][0]}: reply received. Both are in VLAN ${V[a]} (same broadcast domain).`:`❌ ${H[a][0]} (VLAN ${V[a]}) → ${H[b][0]} (VLAN ${V[b]}): timed out.\nDifferent VLANs = different networks. You need a router (router-on-a-stick) or a Layer 3 switch.`};$("vGo").click();
+/* T10 */
+function vl(){const b=toN($("vBase").value),p=+$("vPre").value,hs=$("vHosts").value.split(",").map(x=>+x.trim()).filter(x=>x>0).sort((x,y)=>y-x);if(b===null||!p||!hs.length){$("vTbl").innerHTML="";return}
+const base=(b&((0xFFFFFFFF<<(32-p))>>>0))>>>0,cap=2**(32-p);let off=0,r="<tr><th>Need</th><th>Network</th><th>Mask</th><th>Usable</th><th>Range</th><th>Broadcast</th></tr>",over=false;
+hs.forEach(h=>{let bits=2;while(2**bits-2<h)bits++;const sz=2**bits,pre=32-bits;if(off%sz)off+=sz-off%sz;if(off+sz>cap){over=true;r+=`<tr><td>${h}</td><td colspan=5 style="color:var(--red)">Does not fit!</td></tr>`;return}
+const a=base+off;r+=`<tr><td>${h}</td><td>${toS(a)}/${pre}</td><td>${toS((0xFFFFFFFF<<bits)>>>0)}</td><td>${sz-2}</td><td>${toS(a+1)} – ${toS(a+sz-2)}</td><td>${toS(a+sz-1)}</td></tr>`;off+=sz});
+$("vTbl").innerHTML=r;$("vMsg").textContent=over?"Requirements exceed the base network — use a larger block.":`Used ${off} of ${cap} addresses (${Math.round(off/cap*100)}%). Free: ${cap-off}.`}
+["vBase","vPre","vHosts"].forEach(i=>$(i).oninput=vl);vl();
+
+})();
+(function(){
+
+const $=id=>document.getElementById(id);
+const toN=s=>{const p=s.trim().split(".");if(p.length!==4||p.some(x=>!/^\d{1,3}$/.test(x)||+x>255))return null;return((+p[0]<<24)|(+p[1]<<16)|(+p[2]<<8)|+p[3])>>>0};
+const toS=n=>[24,16,8,0].map(s=>(n>>>s)&255).join(".");
+/* T11 */
+const DO=[["Discover","PC → broadcast (255.255.255.255)","“Is there a DHCP server? I need an address.” Source 0.0.0.0, UDP 68→67."],["Offer","Server → PC","“You can have 192.168.1.11/24, gateway .1, DNS 8.8.8.8, lease 24h.”"],["Request","PC → broadcast","“I accept that offer.” Broadcast so other servers know which offer was chosen."],["Acknowledge","Server → PC","“Confirmed — it's yours.” PC now configures the address."]];
+$("dora").innerHTML=DO.map((d,i)=>`<button class="btn" data-i="${i}">${i+1}. ${d[0]}</button>`).join("");
+$("dora").onclick=e=>{const b=e.target.closest("button");if(!b)return;[...$("dora").children].forEach(x=>x.classList.remove("on"));b.classList.add("on");const d=DO[b.dataset.i];$("doraOut").textContent=`${d[0].toUpperCase()}\n${d[1]}\n${d[2]}`};$("dora").firstChild.click();
+function dp(){const n=toN($("dNet").value),p=+$("dPre").value,ex=+$("dEx").value||0;if(n===null||p<8||p>30){$("dOut").textContent="Enter a valid network and prefix (8–30).";return}
+const h=2**(32-p)-2,net=(n&((0xFFFFFFFF<<(32-p))>>>0))>>>0;$("dOut").textContent=`Network ${toS(net)}/${p}\nUsable hosts: ${h}\nExcluded (static): ${ex}\nAddresses leasable by DHCP: ${Math.max(0,h-ex)}`}
+["dNet","dPre","dEx"].forEach(i=>$(i).oninput=dp);dp();
+/* T12 */
+const REC={"www.school.lk":"10.0.0.80","mail.school.lk":"10.0.0.25"};
+$("urlGo").onclick=()=>{const u=$("url").value.trim().toLowerCase();let o=`Browser: http://${u}\n`;
+if(!$("hasDns").checked){$("urlOut").textContent=o+"1. No DNS server configured on the PC.\n❌ Host name unresolved. (Try the IP address instead.)";return}
+const ip=REC[u];o+=`1. PC asks DNS 10.0.0.53: "A record for ${u}?"\n`;
+if(!ip){$("urlOut").textContent=o+"2. DNS replies: no such record.\n❌ Name not found — add an A record on the DNS server.";return}
+o+=`2. DNS replies: ${ip}\n3. PC opens TCP connection to ${ip}:80\n`;
+$("urlOut").textContent=o+($("hasHttp").checked?"4. HTTP GET / → 200 OK\n✅ Page loads.":"4. Connection refused — HTTP service is OFF on the server.\n❌ Turn it on under Services → HTTP.")};$("urlGo").click();
+/* T13 */
+const R=[["deny","tcp","192.168.1.0","0.0.0.255","10.0.0.80","0.0.0.0",80],["permit","ip","192.168.1.0","0.0.0.255","0.0.0.0","255.255.255.255",0]];
+const rs=["10 deny   tcp 192.168.1.0 0.0.0.255 host 10.0.0.80 eq 80","20 permit ip  192.168.1.0 0.0.0.255 any","   (implicit) deny ip any any"];$("aclRules").textContent=rs.join("\n");
+const mt=(ip,net,w)=>(ip&~w)>>>0===(toN(net)&~w)>>>0;
+$("aGo").onclick=()=>{const s=toN($("aS").value),d=toN($("aD").value);if(s===null||d===null){$("aOut").textContent="Invalid IP.";return}const pr=$("aP").value,po=+$("aPort").value;
+for(let i=0;i<2;i++){const r=R[i],w1=toN(r[3]),w2=toN(r[5]);if((r[1]==="ip"||r[1]===pr)&&mt(s,r[2],w1)&&mt(d,r[4],w2)&&(!r[6]||po===r[6])){$("aOut").textContent=`Matched rule ${(i+1)*10}: ${r[0].toUpperCase()}\n${r[0]==="permit"?"✅ Packet forwarded.":"❌ Packet dropped (host unreachable sent)."}`;return}}
+$("aOut").textContent="No rule matched → implicit deny.\n❌ Packet dropped."};$("aGo").click();
+/* T14 */
+const HS=["192.168.1.10","192.168.1.11","192.168.1.12"];let nt=[];
+$("natH").innerHTML=HS.map((h,i)=>`<button class="btn p" data-i="${i}">${h} → Internet</button>`).join("");
+$("natH").onclick=e=>{const b=e.target.closest("button");if(!b)return;const lp=1024+Math.floor(Math.random()*50000);nt.push([HS[b.dataset.i]+":"+lp,"203.0.113.2:"+(1024+nt.length),"198.51.100.7:80"]);nr()};
+function nr(){$("natT").innerHTML="<tr><th>Inside local</th><th>Inside global</th><th>Outside global</th></tr>"+nt.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td></tr>`).join("")}
+$("natClr").onclick=()=>{nt=[];nr()};
+/* T15 */
+const LK=["R1 → R2","R2 → R4","R1 → R3","R3 → R4"],BW=[[1000,100],[100,100],[10,100],[100,100]],BWL={10:"10 Mbps",100:"100 Mbps (Fast)",1000:"1 Gbps",10000:"10 Gbps"};
+const cost=b=>Math.max(1,Math.floor(100/b));
+function oc(){const v=[...document.querySelectorAll("#oT select")].map(s=>+s.value);const a=cost(v[0])+cost(v[1]),b=cost(v[2])+cost(v[3]);
+$("oOut").textContent=`Path A (R1→R2→R4): ${cost(v[0])} + ${cost(v[1])} = ${a}\nPath B (R1→R3→R4): ${cost(v[2])} + ${cost(v[3])} = ${b}\n`+(a===b?"Equal cost → OSPF load-balances over both paths (ECMP).":`Best path: ${a<b?"A via R2":"B via R3"} (lowest total cost)`)+"\nNote: with the default 100 Mbps reference, 100M, 1G and 10G all cost 1. Fix: auto-cost reference-bandwidth 10000."}
+$("oT").innerHTML="<tr><th>Link</th><th>Bandwidth</th><th>Cost</th></tr>"+LK.map((l,i)=>`<tr><td>${l}</td><td><select>${Object.keys(BWL).map(k=>`<option value="${k}" ${+k===[1000,100,10,100][i]?"selected":""}>${BWL[k]}</option>`).join("")}</select></td><td class="c">${cost([1000,100,10,100][i])}</td></tr>`).join("");
+[...document.querySelectorAll("#oT select")].forEach((s,i)=>s.onchange=()=>{document.querySelectorAll("#oT .c")[i].textContent=cost(+s.value);oc()});oc();
+
+})();
+(function(){
+document.querySelectorAll('.cli').forEach(c=>{const b=c.querySelector('.cp');b.onclick=()=>{const t=c.querySelector('pre').innerText;const ok=()=>{b.textContent='Copied ✓';setTimeout(()=>b.textContent='Copy',1200)};
+const fb=()=>{const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){}a.remove()};
+if(navigator.clipboard)navigator.clipboard.writeText(t).then(ok).catch(fb);else fb()}});
+const L=[...document.querySelectorAll("nav.toc a")];const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)L.forEach(l=>l.classList.toggle("on",l.getAttribute("href")==="#"+e.target.id))}),{rootMargin:"-15% 0px -70% 0px"});
+document.querySelectorAll(".section").forEach(s=>io.observe(s));
+})();
+(function(){
+document.querySelectorAll('.si-toggle').forEach(b=>b.addEventListener('click',()=>{const p=document.getElementById(b.dataset.target);if(!p)return;b.setAttribute('aria-expanded',p.classList.toggle('open')?'true':'false')}));
+const vb=document.getElementById('vocabBtn'),vd=document.getElementById('vocabBody');document.getElementById('vocabHead').onclick=()=>{const o=vd.style.display==='none';vd.style.display=o?'block':'none';vb.setAttribute('aria-expanded',o);vb.textContent=o?'▴':'▾'};
+})();
+(function(){
+document.querySelectorAll('.ansbtn').forEach(b=>b.onclick=()=>{const a=b.nextElementSibling,o=a.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Hide answer ▴':'Show answer ▾'});
+let all=false;document.getElementById('ansAll').onclick=function(){all=!all;document.querySelectorAll('.ansbtn').forEach(b=>{const a=b.nextElementSibling;a.classList.toggle('open',all);b.textContent=all?'Hide answer ▴':'Show answer ▾'});this.textContent=all?'Hide all answers':'Show all answers'};
+const rows=[...document.querySelectorAll('#csTbl tr')].slice(1),ft=document.getElementById('csFilter'),ct=document.getElementById('csCount');
+function filt(){const q=ft.value.toLowerCase().trim();let cat=null,n=0,cn=0;rows.forEach(r=>{if(r.classList.contains('cat')){if(cat)cat.style.display=cn?'':'none';cat=r;cn=0;return}const v=!q||r.textContent.toLowerCase().includes(q);r.style.display=v?'':'none';if(v){cn++;n++}});if(cat)cat.style.display=cn?'':'none';ct.textContent=n+' commands'}
+ft.oninput=filt;filt();
+rows.forEach(r=>{if(r.classList.contains('cr'))r.onclick=()=>{const t=r.querySelector('code').textContent;const d=()=>{r.style.outline='1px solid #81c995';setTimeout(()=>r.style.outline='',600)};if(navigator.clipboard)navigator.clipboard.writeText(t).then(d).catch(()=>{});else d()}});
+const M=[["Which device forwards frames using MAC addresses?", ["Hub", "Switch", "Router", "Modem"], 1, "A switch learns MAC addresses (Layer 2) and forwards frames only to the right port."], ["Classic rule: which cable joins two switches?", ["Straight-through", "Console", "Crossover", "Rollover to a PC"], 2, "Same device type → crossover (Auto-MDIX may make either work in PT)."], ["By default, a router interface is…", ["Up and forwarding", "Administratively down", "In trunk mode", "In VLAN 1"], 1, "Router ports need no shutdown; switch ports are up by default."], ["Binary 11000000 equals which decimal?", ["128", "160", "192", "224"], 2, "128 + 64 = 192."], ["Which address is private (RFC 1918)?", ["172.32.1.1", "192.169.1.1", "11.0.0.1", "172.20.5.5"], 3, "172.16.0.0 – 172.31.255.255 is private; 172.32.x.x is public."], ["How many usable hosts are in a /27?", ["32", "30", "62", "14"], 1, "2⁵ − 2 = 30."], ["The subnet mask for /26 is…", ["255.255.255.128", "255.255.255.192", "255.255.255.224", "255.255.254.0"], 1, "/26 = 26 ones → 255.255.255.192."], ["What is the broadcast address of 192.168.1.77/26?", ["192.168.1.63", "192.168.1.127", "192.168.1.255", "192.168.1.95"], 1, "Block 64: network .64, broadcast .127."], ["The PDU at the Transport layer is called a…", ["Packet", "Frame", "Segment", "Bit"], 2, "L4 segment, L3 packet, L2 frame, L1 bits."], ["At which OSI layer do routers operate?", ["Layer 1", "Layer 2", "Layer 3", "Layer 4"], 2, "Routers forward packets using IP addresses (Layer 3)."], ["The prompt Router(config-if)# means…", ["User EXEC", "Global configuration", "Interface configuration", "Privileged EXEC"], 2, "(config-if) is interface configuration mode."], ["Which command saves the configuration?", ["write erase", "copy running-config startup-config", "save config", "show running-config"], 1, "It copies RAM config to NVRAM so it survives a reload."], ["Which command gives a one-line status per interface?", ["show interfaces trunk", "show ip route", "show ip interface brief", "show vlan brief"], 2, "show ip interface brief lists IP and status for every interface."], ["Routes: 10.0.0.0/8, 10.1.0.0/16, 0.0.0.0/0. Destination 10.1.5.9 uses…", ["10.0.0.0/8", "10.1.0.0/16", "0.0.0.0/0", "None"], 1, "Longest prefix match wins: /16 beats /8 and /0."], ["Which command creates a default route?", ["ip route 0.0.0.0 0.0.0.0 <next-hop>", "ip default 0.0.0.0", "route add default", "ip gateway <next-hop>"], 0, "A default route is 0.0.0.0 0.0.0.0 via a next hop."], ["What does a VLAN separate?", ["Collision domains only", "Broadcast domains", "Speeds", "IOS versions"], 1, "Each VLAN is its own broadcast domain (and usually its own subnet)."], ["Which port type carries several VLANs between switches?", ["Access", "Console", "Trunk", "Loopback"], 2, "A trunk tags frames with 802.1Q."], ["Put an access port in VLAN 10:", ["switchport vlan 10", "switchport access vlan 10", "vlan access 10", "switchport trunk vlan 10"], 1, "Use switchport mode access then switchport access vlan 10."], ["Router-on-a-stick sub-interface for VLAN 10 needs…", ["encapsulation dot1Q 10", "switchport access vlan 10", "ip helper-address 10", "vlan 10"], 0, "encapsulation dot1Q <id> tags the sub-interface."], ["First step of VLSM allocation:", ["Pick the smallest subnet first", "Sort requirements largest to smallest", "Use /24 everywhere", "Assign random ranges"], 1, "Allocate big blocks first so smaller ones fit cleanly."], ["Best mask for a router-to-router link:", ["/24", "/28", "/29", "/30"], 3, "A /30 gives exactly 2 usable hosts."], ["DHCP message order:", ["Request, Offer, Discover, Ack", "Discover, Offer, Request, Acknowledge", "Offer, Discover, Ack, Request", "Discover, Request, Offer, Ack"], 1, "DORA: Discover, Offer, Request, Acknowledge."], ["A PC shows 169.254.10.5. This means…", ["DHCP worked", "Static IP set", "DHCP failed (APIPA)", "It is a public IP"], 2, "169.254.x.x is automatic private addressing."], ["Which command relays DHCP across a router?", ["ip dhcp relay", "ip helper-address", "dhcp forward", "ip relay-agent"], 1, "Set ip helper-address on the client-facing interface."], ["The wildcard mask for /24 is…", ["255.255.255.0", "0.0.0.255", "0.0.255.255", "0.0.0.0"], 1, "Wildcard is the inverse of the subnet mask."], ["Every ACL ends with an invisible…", ["permit any", "deny any", "log entry", "remark"], 1, "Implicit deny any blocks anything not matched."], ["Extended ACLs are best placed…", ["Close to the destination", "Close to the source", "On the console", "Anywhere on trunks"], 1, "Extended ACLs are specific, so block early near the source."], ["PAT lets many private hosts share one public IP by using…", ["Different MAC addresses", "Different port numbers", "Different VLANs", "Different masks"], 1, "PAT (overload) distinguishes flows by port number."], ["OSPF cost is calculated as…", ["Hop count", "Delay only", "Reference bandwidth ÷ interface bandwidth", "Number of routers"], 2, "Default reference is 100 Mbps."], ["A ping to an IP works but the same ping to a name fails. The fault is most likely…", ["Bad cable", "DNS", "Wrong VLAN", "OSPF"], 1, "Connectivity is fine; name resolution (DNS) is failing."]];let sc=0;const L=document.getElementById('mcqList'),SC=document.getElementById('mcqScore');
+function build(){sc=0;SC.textContent='Score: 0 / '+M.length;L.innerHTML='';M.forEach((q,i)=>{const c=document.createElement('div');c.className='mcq-card';const h=document.createElement('p');h.className='mcq-q';const sp=document.createElement('span');sp.textContent=(i+1)+'.';h.append(sp,q[0]);const o=document.createElement('div');o.className='mcq-opts';const nt=document.createElement('div');nt.className='mnote';nt.textContent='Answer: '+q[1][q[2]]+' — '+q[3];
+q[1].forEach((t,j)=>{const b=document.createElement('button');b.className='mo';const l=document.createElement('i');l.textContent='ABCD'[j];b.append(l,t);b.onclick=()=>{if(c.dataset.done)return;c.dataset.done=1;o.querySelectorAll('.mo').forEach(x=>x.classList.add('lk'));o.children[q[2]].classList.add('ok');if(j===q[2]){sc++;SC.textContent='Score: '+sc+' / '+M.length}else b.classList.add('bad');nt.classList.add('show')};o.append(b)});c.append(h,o,nt);L.append(c)})}
+document.getElementById('mcqReset').onclick=build;build();
+})();
+</script></body></html>

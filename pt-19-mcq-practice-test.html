@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>📝 MCQ Practice Test — 30 Questions — Cisco Packet Tracer Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&family=Noto+Sans+Sinhala:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+:root{--blue:#8ab4f8;--red:#f28b82;--yellow:#fdd663;--green:#81c995;--purple:#c58af9;--ink:#e8eaed;--sub:#9aa0a6;--paper:#232427;--bg:#131417;--line:#3c4043;--sh:0 1px 2px rgba(0,0,0,.5),0 2px 10px rgba(0,0,0,.4)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;overflow-x:hidden}
+h1,h2,h3,.st{font-family:'Google Sans',Roboto,sans-serif}
+.hero{background:linear-gradient(120deg,#1a73e8,#7B61FF 45%,#EA4335);padding:52px 24px 70px}
+.hi{max-width:1100px;margin:0 auto}
+.eyebrow{display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;background:rgba(255,255,255,.18);padding:6px 12px;border-radius:20px;margin-bottom:16px}
+.hero h1{font-size:32px;margin:0 0 10px;line-height:1.25}.hero p{max-width:700px;margin:0;opacity:.95}
+.layout{max-width:1180px;margin:-34px auto 60px;padding:0 24px;display:grid;grid-template-columns:240px 1fr;gap:28px;align-items:start}
+nav.toc{background:var(--paper);border-radius:16px;box-shadow:var(--sh);padding:14px 8px;position:sticky;top:16px}
+nav.toc .h{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--sub);padding:6px 14px 8px}
+nav.toc a{display:block;padding:9px 14px;border-radius:10px;color:var(--ink);text-decoration:none;font-size:13.5px;border-left:3px solid transparent}
+nav.toc a:hover{background:#2c2d30}nav.toc a.on{background:#2a3a55;color:#a8c7fa;border-left-color:var(--blue)}
+main{min-width:0}
+.section{background:var(--paper);border-radius:18px;box-shadow:var(--sh);padding:28px 30px;margin-bottom:22px;scroll-margin-top:16px}
+.k{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.nb{width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;flex:none}
+.section h2{font-size:21px;margin:0}.section p{color:#c7cbd1;font-size:15px;margin:0 0 14px}
+.sh{font-family:'Google Sans';font-weight:700;font-size:14.5px;margin:20px 0 8px}
+ul.l{margin:0 0 12px;padding-left:20px;color:#c7cbd1;font-size:14.5px}ul.l li{margin-bottom:6px}
+code,.mono{font-family:'Roboto Mono',monospace}code{background:#1a1b1e;padding:1px 6px;border-radius:5px;color:var(--yellow);font-size:13px}
+.co{background:#22344d;border-left:4px solid var(--blue);border-radius:10px;padding:13px 17px;font-size:14px;color:#a8c7fa;margin:14px 0}
+.co.tip{background:#1c2b22;border-left-color:var(--green);color:#bfe9cd}.co.warn{background:#3a2530;border-left-color:var(--red);color:#f3b8c2}.co b{color:#fff}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin:8px 0}
+table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:480px}
+th{text-align:left;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--sub);padding:10px 12px;border-bottom:2px solid var(--line)}
+td{padding:10px 12px;border-bottom:1px solid var(--line);color:#dfe1e5}tr:last-child td{border-bottom:none}
+.lab{background:#1a1b1e;border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:16px 0}
+.lab .t{font-family:'Google Sans';font-weight:700;font-size:12.5px;color:var(--yellow);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px}
+button,select,input{font:inherit}
+.btn{background:#2c2d30;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:500;padding:8px 14px;border-radius:9px;cursor:pointer}
+.btn:hover{background:#3a3b3e}.btn.p{background:#1a73e8;border-color:#1a73e8;color:#fff}.btn.on{background:#2a3a55;border-color:var(--blue);color:#a8c7fa}
+input[type=text],select{background:#202124;border:1px solid var(--line);color:var(--ink);padding:8px 11px;border-radius:9px;font-family:'Roboto Mono',monospace;font-size:13px}
+input:focus,select:focus{outline:none;border-color:var(--blue)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.out{background:#131417;border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-family:'Roboto Mono',monospace;font-size:12.5px;color:#c8f5d6;white-space:pre-wrap;min-height:48px;margin-top:10px}
+.zones{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.bits{display:flex;gap:14px;flex-wrap:wrap}.oct{text-align:center}
+.bit{width:34px;height:40px;margin:2px;border-radius:8px;border:1px solid var(--line);background:#202124;color:var(--sub);font-family:'Roboto Mono';font-size:16px;cursor:pointer}
+.bit.one{background:#2a3a55;border-color:var(--blue);color:#fff}
+.bw{font-size:10px;color:var(--sub);font-family:'Roboto Mono'}.dec{font-size:22px;font-weight:700;font-family:'Roboto Mono';color:var(--yellow);margin-top:4px}
+.bar{display:flex;height:34px;border-radius:8px;overflow:hidden;font-size:11px;font-weight:700;margin:10px 0}
+.bar div{display:flex;align-items:center;justify-content:center;color:#0d1f14;transition:width .3s}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.kv{background:#202124;border:1px solid var(--line);border-radius:10px;padding:9px 12px}
+.kv span{display:block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--sub)}.kv b{font-family:'Roboto Mono';font-size:14px;color:#fff}
+.nav2{display:flex;justify-content:space-between;gap:12px;margin-top:8px;flex-wrap:wrap;color:var(--sub);font-size:13px}
+@media(max-width:900px){.layout{grid-template-columns:1fr}nav.toc{position:static;display:flex;overflow-x:auto;padding:8px}nav.toc .h{display:none}nav.toc a{white-space:nowrap}.zones,.g2{grid-template-columns:1fr}.section{padding:22px 18px}}
+
+
+.layers{display:grid;gap:6px}.ly{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:#202124;cursor:pointer;font-size:13.5px}
+.ly b{font-family:'Roboto Mono';width:22px;color:var(--yellow)}.ly.on{background:#2a3a55;border-color:var(--blue)}
+.pdu{display:flex;margin:12px 0;font-family:'Roboto Mono';font-size:12px;border-radius:8px;overflow:hidden;min-height:34px}.pdu div{padding:8px 10px;color:#0d1f14;font-weight:700;display:flex;align-items:center}
+.vl{display:flex;gap:8px;flex-wrap:wrap}.port{background:#202124;border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:12.5px;min-width:120px}
+.port select{width:100%;margin-top:6px;font-size:12px}
+nav.toc{max-height:calc(100vh - 32px);overflow:auto}
+.td{margin:10px 10px 4px;border-top:1px solid var(--line);padding-top:10px;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--sub)}
+.cli{background:#0d0f12;border:1px solid var(--line);border-radius:12px;margin:12px 0;overflow:hidden}
+.ch{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:7px 12px;background:#1a1b1e;border-bottom:1px solid var(--line);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--yellow);font-weight:700}
+.ch .btn{padding:4px 10px;font-size:11.5px;text-transform:none;letter-spacing:0}
+.cli pre{margin:0;padding:12px 14px;font-family:'Roboto Mono',monospace;font-size:12.5px;line-height:1.6;color:#c8f5d6;overflow-x:auto}
+.cli .cm{color:#7d8590}
+@media(max-width:900px){.td{display:none}}
+.si-toggle{display:inline-flex;align-items:center;gap:7px;background:#2a2b2e;border:1px solid var(--line);color:#a8c7fa;font-weight:500;font-size:12.5px;padding:7px 13px;border-radius:20px;cursor:pointer;white-space:nowrap}
+.si-divider{display:flex;align-items:center;gap:14px;margin:22px 0 0}.si-divider::before,.si-divider::after{content:'';flex:1;height:1px;background:var(--line)}
+.si-toggle:hover{background:#33343a;border-color:#5f6368}.si-toggle .arrow{display:inline-block;transition:transform .2s;font-size:10px}.si-toggle[aria-expanded="true"] .arrow{transform:rotate(180deg)}
+.si-panel{display:none;background:#1c2b22;border:1px solid #2f5b41;border-left:4px solid var(--green);border-radius:10px;padding:16px 20px;margin:14px 0 6px;font-family:'Noto Sans Sinhala',Roboto,sans-serif}
+.si-panel.open{display:block;animation:fs .18s ease}.si-panel p{color:#d3e9db;font-size:14.5px;margin:0 0 10px;line-height:1.85}.si-panel p:last-child{margin:0}.si-panel b{color:#fff}
+.si-panel code{background:#14201a;color:var(--yellow)}
+.si-label{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#7cc99a;font-weight:700;margin-bottom:8px;display:block}
+@keyframes fs{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.vocab-grid{display:flex;flex-direction:column;gap:18px}.vocab-card{background:#1a1b1e;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.vocab-header{display:flex;align-items:center;gap:12px;padding:14px 20px;border-bottom:1px solid var(--line);background:#202124}.vocab-word{font-family:'Google Sans';font-size:20px;font-weight:700;color:#a8c7fa}
+.vocab-pos{font-size:12px;color:var(--sub);font-style:italic;background:#2c2d30;padding:3px 9px;border-radius:20px}.vocab-body{padding:14px 20px}
+.vocab-meanings{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}.vocab-en{background:#1c2b3e;border-left:3px solid var(--blue);border-radius:8px;padding:10px 14px}.vocab-si{background:#1c2b22;border-left:3px solid var(--green);border-radius:8px;padding:10px 14px}
+.vocab-lang-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:6px;display:block;color:var(--sub)}
+.vocab-en p{color:#a8c7fa;font-size:13.5px;margin:0}.vocab-si p{color:#d3e9db;font-size:14.5px;margin:0;font-family:'Noto Sans Sinhala',Roboto,sans-serif}
+.vocab-sentences-head{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--sub);font-weight:700;margin-bottom:8px}
+.vocab-sentences{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}.vocab-sentences li{display:flex;gap:10px;font-size:13.5px;color:#c7cbd1}
+.vocab-tag{flex:none;font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:12px;margin-top:2px;height:fit-content}
+.tag-daily{background:#2a2b2e;color:#9aa0a6}.tag-cyber{background:#3a2530;color:#f3b8c2}.tag-net{background:#1c2b3e;color:#a8c7fa}.tag-hw{background:#2b2510;color:#fdd663}.tag-sw{background:#1c2b22;color:#81c995}
+.vocab-sentences b{color:#fff}@media(max-width:900px){.vocab-meanings{grid-template-columns:1fr}}
+.qcard{background:#1a1b1e;border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin:14px 0}.qcard p{margin:8px 0 12px;color:#dfe1e5}
+.qhead{display:flex;gap:10px;align-items:center}.qtag{font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;padding:2px 9px;border-radius:12px;background:#1c2b3e;color:#a8c7fa}
+.ans{display:none;margin-top:12px;background:#1c2b22;border-left:4px solid var(--green);border-radius:10px;padding:12px 16px;font-size:14px;color:#d3e9db}.ans.open{display:block}.ans b{color:#fff}.ans code{background:#14201a}
+.ans .tw{margin:8px 0}.ans table{min-width:560px}
+tr.cat td{background:#1a1b1e;color:var(--blue);font-family:'Google Sans';font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+tr.cr{cursor:pointer}tr.cr:hover td{background:#1e1f22}tr.cr code{white-space:pre-wrap}
+.mcq-head{display:flex;justify-content:space-between;align-items:center;background:#1a1b1e;border:1px solid var(--line);border-radius:12px;padding:10px 16px;margin:14px 0}
+.mcq-card{background:#1a1b1e;border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin-bottom:14px}.mcq-q{font-family:'Google Sans';font-size:15px;font-weight:600;margin:0 0 12px}.mcq-q span{color:var(--purple);margin-right:6px}
+.mcq-opts{display:flex;flex-direction:column;gap:8px}.mo{display:flex;gap:10px;align-items:center;text-align:left;background:#202124;border:1px solid var(--line);color:#dfe1e5;font-size:13.5px;padding:10px 14px;border-radius:10px;cursor:pointer}
+.mo:hover:not(.lk){background:#2c2d30}.mo i{flex:none;width:22px;height:22px;border-radius:50%;background:#2c2d30;color:var(--sub);font-size:11px;font-style:normal;font-weight:700;display:flex;align-items:center;justify-content:center}
+.mo.ok{background:#16301f;border-color:var(--green);color:#c8f5d6}.mo.bad{background:#33191c;border-color:var(--red);color:#f7c6c9}.mo.lk{cursor:default}
+.mnote{display:none;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font-size:12.5px;color:var(--sub)}.mnote.show{display:block}
+
+
+a.btn{text-decoration:none;display:inline-block}
+.crumb{display:inline-block;margin-bottom:14px;font-size:13px;color:#fff;opacity:.9;text-decoration:none}.crumb:hover{opacity:1;text-decoration:underline}
+nav.toc a.home{color:var(--blue);font-weight:500;margin-bottom:4px}
+.pn{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:6px}
+.pn a{flex:1;min-width:200px;text-decoration:none;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px 16px;box-shadow:var(--sh);font-size:13.5px}
+.pn a:hover{background:#2c2d30;border-color:#4a4d52}.pn a small{display:block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--sub);margin-bottom:2px}
+.pn a.next{text-align:right}.pn .sp{flex:1}
+footer{text-align:center;color:var(--sub);font-size:12.5px;padding:6px 0 50px}
+.back-top{display:inline-block;margin:6px 8px 0;font-size:12px;color:var(--blue);text-decoration:none}.back-top:hover{text-decoration:underline}
+</style></head><body>
+<div class="hero"><div class="hi"><a class="crumb" href="index.html">← Cisco Packet Tracer — Complete Guide</a><br>
+<span class="eyebrow">Packet Tracer · Topic 19 of 19 · Practice &amp; Reference</span>
+<h1>📝 MCQ Practice Test — 30 Questions</h1>
+<p>Part of the Cisco Packet Tracer Complete Guide.</p></div></div>
+<div class="layout"><nav class="toc" id="toc"><div class="h">Topics</div><a class="home" href="index.html">← All topics</a><div class="td">Foundations</div><a href="pt-01-interface.html">1. Packet Tracer Interface</a><a href="pt-02-devices-cables.html">2. Devices &amp; Cables</a><a href="pt-03-first-network.html">3. Your First Network</a><a href="pt-04-binary-ipv4.html">4. Binary &amp; IPv4</a><a href="pt-05-subnetting.html">5. Subnetting</a><div class="td">Switching &amp; Routing</div><a href="pt-06-osi-tcpip.html">6. OSI &amp; TCP/IP</a><a href="pt-07-ios-cli.html">7. The IOS CLI</a><a href="pt-08-static-routing.html">8. Routing &amp; Static Routes</a><a href="pt-09-vlans-trunks.html">9. VLANs &amp; Trunks</a><a href="pt-10-vlsm.html">10. VLSM</a><div class="td">Services &amp; Security</div><a href="pt-11-dhcp.html">11. DHCP</a><a href="pt-12-dns-web-servers.html">12. DNS &amp; Web Servers</a><a href="pt-13-acls.html">13. Access Lists (ACL)</a><a href="pt-14-nat-pat.html">14. NAT &amp; PAT</a><a href="pt-15-ospf.html">15. OSPF</a><div class="td">Sinhala</div><a href="pt-16-sinhala-vocabulary.html">16. 🇱🇰 Sinhala Vocabulary</a><div class="td">Practice &amp; Reference</div><a href="pt-17-cli-cheat-sheet.html">17. CLI Cheat Sheet</a><a href="pt-18-calculation-practice.html">18. Calculation Practice</a><a class="on" href="pt-19-mcq-practice-test.html">19. MCQ Practice Test</a></nav><main>
+<section class="section" id="t19"><div class="k"><div class="nb" style="background:#EA4335">19</div><h2>📝 MCQ Practice Test — 30 Questions</h2></div><p>Click an answer. Green = correct, red = wrong, and the explanation appears below.</p><div class="mcq-head"><b id="mcqScore">Score: 0 / 30</b><button class="btn" id="mcqReset">↺ Reset quiz</button></div><div id="mcqList"></div></section>
+<div class="pn"><a class="prev" href="pt-18-calculation-practice.html"><small>← Previous</small>18. Calculation Practice</a><a class="next" href="index.html"><small>Done</small>Back to all topics</a></div>
+</main></div>
+<footer><a class="back-top" href="index.html">📚 Packet Tracer Index</a><a class="back-top" href="../index.html">🏠 Main Study Notes Index</a><a class="back-top" href="#toc">Back to top ↑</a></footer>
+<script>
+(function(){
+const M=[["Which device forwards frames using MAC addresses?", ["Hub", "Switch", "Router", "Modem"], 1, "A switch learns MAC addresses (Layer 2) and forwards frames only to the right port."], ["Classic rule: which cable joins two switches?", ["Straight-through", "Console", "Crossover", "Rollover to a PC"], 2, "Same device type → crossover (Auto-MDIX may make either work in PT)."], ["By default, a router interface is…", ["Up and forwarding", "Administratively down", "In trunk mode", "In VLAN 1"], 1, "Router ports need no shutdown; switch ports are up by default."], ["Binary 11000000 equals which decimal?", ["128", "160", "192", "224"], 2, "128 + 64 = 192."], ["Which address is private (RFC 1918)?", ["172.32.1.1", "192.169.1.1", "11.0.0.1", "172.20.5.5"], 3, "172.16.0.0 – 172.31.255.255 is private; 172.32.x.x is public."], ["How many usable hosts are in a /27?", ["32", "30", "62", "14"], 1, "2⁵ − 2 = 30."], ["The subnet mask for /26 is…", ["255.255.255.128", "255.255.255.192", "255.255.255.224", "255.255.254.0"], 1, "/26 = 26 ones → 255.255.255.192."], ["What is the broadcast address of 192.168.1.77/26?", ["192.168.1.63", "192.168.1.127", "192.168.1.255", "192.168.1.95"], 1, "Block 64: network .64, broadcast .127."], ["The PDU at the Transport layer is called a…", ["Packet", "Frame", "Segment", "Bit"], 2, "L4 segment, L3 packet, L2 frame, L1 bits."], ["At which OSI layer do routers operate?", ["Layer 1", "Layer 2", "Layer 3", "Layer 4"], 2, "Routers forward packets using IP addresses (Layer 3)."], ["The prompt Router(config-if)# means…", ["User EXEC", "Global configuration", "Interface configuration", "Privileged EXEC"], 2, "(config-if) is interface configuration mode."], ["Which command saves the configuration?", ["write erase", "copy running-config startup-config", "save config", "show running-config"], 1, "It copies RAM config to NVRAM so it survives a reload."], ["Which command gives a one-line status per interface?", ["show interfaces trunk", "show ip route", "show ip interface brief", "show vlan brief"], 2, "show ip interface brief lists IP and status for every interface."], ["Routes: 10.0.0.0/8, 10.1.0.0/16, 0.0.0.0/0. Destination 10.1.5.9 uses…", ["10.0.0.0/8", "10.1.0.0/16", "0.0.0.0/0", "None"], 1, "Longest prefix match wins: /16 beats /8 and /0."], ["Which command creates a default route?", ["ip route 0.0.0.0 0.0.0.0 <next-hop>", "ip default 0.0.0.0", "route add default", "ip gateway <next-hop>"], 0, "A default route is 0.0.0.0 0.0.0.0 via a next hop."], ["What does a VLAN separate?", ["Collision domains only", "Broadcast domains", "Speeds", "IOS versions"], 1, "Each VLAN is its own broadcast domain (and usually its own subnet)."], ["Which port type carries several VLANs between switches?", ["Access", "Console", "Trunk", "Loopback"], 2, "A trunk tags frames with 802.1Q."], ["Put an access port in VLAN 10:", ["switchport vlan 10", "switchport access vlan 10", "vlan access 10", "switchport trunk vlan 10"], 1, "Use switchport mode access then switchport access vlan 10."], ["Router-on-a-stick sub-interface for VLAN 10 needs…", ["encapsulation dot1Q 10", "switchport access vlan 10", "ip helper-address 10", "vlan 10"], 0, "encapsulation dot1Q <id> tags the sub-interface."], ["First step of VLSM allocation:", ["Pick the smallest subnet first", "Sort requirements largest to smallest", "Use /24 everywhere", "Assign random ranges"], 1, "Allocate big blocks first so smaller ones fit cleanly."], ["Best mask for a router-to-router link:", ["/24", "/28", "/29", "/30"], 3, "A /30 gives exactly 2 usable hosts."], ["DHCP message order:", ["Request, Offer, Discover, Ack", "Discover, Offer, Request, Acknowledge", "Offer, Discover, Ack, Request", "Discover, Request, Offer, Ack"], 1, "DORA: Discover, Offer, Request, Acknowledge."], ["A PC shows 169.254.10.5. This means…", ["DHCP worked", "Static IP set", "DHCP failed (APIPA)", "It is a public IP"], 2, "169.254.x.x is automatic private addressing."], ["Which command relays DHCP across a router?", ["ip dhcp relay", "ip helper-address", "dhcp forward", "ip relay-agent"], 1, "Set ip helper-address on the client-facing interface."], ["The wildcard mask for /24 is…", ["255.255.255.0", "0.0.0.255", "0.0.255.255", "0.0.0.0"], 1, "Wildcard is the inverse of the subnet mask."], ["Every ACL ends with an invisible…", ["permit any", "deny any", "log entry", "remark"], 1, "Implicit deny any blocks anything not matched."], ["Extended ACLs are best placed…", ["Close to the destination", "Close to the source", "On the console", "Anywhere on trunks"], 1, "Extended ACLs are specific, so block early near the source."], ["PAT lets many private hosts share one public IP by using…", ["Different MAC addresses", "Different port numbers", "Different VLANs", "Different masks"], 1, "PAT (overload) distinguishes flows by port number."], ["OSPF cost is calculated as…", ["Hop count", "Delay only", "Reference bandwidth ÷ interface bandwidth", "Number of routers"], 2, "Default reference is 100 Mbps."], ["A ping to an IP works but the same ping to a name fails. The fault is most likely…", ["Bad cable", "DNS", "Wrong VLAN", "OSPF"], 1, "Connectivity is fine; name resolution (DNS) is failing."]];let sc=0;const L=document.getElementById('mcqList'),SC=document.getElementById('mcqScore');
+function build(){sc=0;SC.textContent='Score: 0 / '+M.length;L.innerHTML='';M.forEach((q,i)=>{const c=document.createElement('div');c.className='mcq-card';const h=document.createElement('p');h.className='mcq-q';const sp=document.createElement('span');sp.textContent=(i+1)+'.';h.append(sp,q[0]);const o=document.createElement('div');o.className='mcq-opts';const nt=document.createElement('div');nt.className='mnote';nt.textContent='Answer: '+q[1][q[2]]+' — '+q[3];
+q[1].forEach((t,j)=>{const b=document.createElement('button');b.className='mo';const l=document.createElement('i');l.textContent='ABCD'[j];b.append(l,t);b.onclick=()=>{if(c.dataset.done)return;c.dataset.done=1;o.querySelectorAll('.mo').forEach(x=>x.classList.add('lk'));o.children[q[2]].classList.add('ok');if(j===q[2]){sc++;SC.textContent='Score: '+sc+' / '+M.length}else b.classList.add('bad');nt.classList.add('show')};o.append(b)});c.append(h,o,nt);L.append(c)})}
+document.getElementById('mcqReset').onclick=build;build();
+})();
+</script></body></html>

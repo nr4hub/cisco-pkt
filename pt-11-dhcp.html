@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>DHCP — Automatic IP Addressing — Cisco Packet Tracer Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&family=Noto+Sans+Sinhala:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+
+:root{--blue:#8ab4f8;--red:#f28b82;--yellow:#fdd663;--green:#81c995;--purple:#c58af9;--ink:#e8eaed;--sub:#9aa0a6;--paper:#232427;--bg:#131417;--line:#3c4043;--sh:0 1px 2px rgba(0,0,0,.5),0 2px 10px rgba(0,0,0,.4)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;overflow-x:hidden}
+h1,h2,h3,.st{font-family:'Google Sans',Roboto,sans-serif}
+.hero{background:linear-gradient(120deg,#1a73e8,#7B61FF 45%,#EA4335);padding:52px 24px 70px}
+.hi{max-width:1100px;margin:0 auto}
+.eyebrow{display:inline-block;font-size:12px;letter-spacing:.14em;text-transform:uppercase;background:rgba(255,255,255,.18);padding:6px 12px;border-radius:20px;margin-bottom:16px}
+.hero h1{font-size:32px;margin:0 0 10px;line-height:1.25}.hero p{max-width:700px;margin:0;opacity:.95}
+.layout{max-width:1180px;margin:-34px auto 60px;padding:0 24px;display:grid;grid-template-columns:240px 1fr;gap:28px;align-items:start}
+nav.toc{background:var(--paper);border-radius:16px;box-shadow:var(--sh);padding:14px 8px;position:sticky;top:16px}
+nav.toc .h{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--sub);padding:6px 14px 8px}
+nav.toc a{display:block;padding:9px 14px;border-radius:10px;color:var(--ink);text-decoration:none;font-size:13.5px;border-left:3px solid transparent}
+nav.toc a:hover{background:#2c2d30}nav.toc a.on{background:#2a3a55;color:#a8c7fa;border-left-color:var(--blue)}
+main{min-width:0}
+.section{background:var(--paper);border-radius:18px;box-shadow:var(--sh);padding:28px 30px;margin-bottom:22px;scroll-margin-top:16px}
+.k{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.nb{width:30px;height:30px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:14px;flex:none}
+.section h2{font-size:21px;margin:0}.section p{color:#c7cbd1;font-size:15px;margin:0 0 14px}
+.sh{font-family:'Google Sans';font-weight:700;font-size:14.5px;margin:20px 0 8px}
+ul.l{margin:0 0 12px;padding-left:20px;color:#c7cbd1;font-size:14.5px}ul.l li{margin-bottom:6px}
+code,.mono{font-family:'Roboto Mono',monospace}code{background:#1a1b1e;padding:1px 6px;border-radius:5px;color:var(--yellow);font-size:13px}
+.co{background:#22344d;border-left:4px solid var(--blue);border-radius:10px;padding:13px 17px;font-size:14px;color:#a8c7fa;margin:14px 0}
+.co.tip{background:#1c2b22;border-left-color:var(--green);color:#bfe9cd}.co.warn{background:#3a2530;border-left-color:var(--red);color:#f3b8c2}.co b{color:#fff}
+.tw{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin:8px 0}
+table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:480px}
+th{text-align:left;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--sub);padding:10px 12px;border-bottom:2px solid var(--line)}
+td{padding:10px 12px;border-bottom:1px solid var(--line);color:#dfe1e5}tr:last-child td{border-bottom:none}
+.lab{background:#1a1b1e;border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin:16px 0}
+.lab .t{font-family:'Google Sans';font-weight:700;font-size:12.5px;color:var(--yellow);text-transform:uppercase;letter-spacing:.06em;margin-bottom:12px}
+button,select,input{font:inherit}
+.btn{background:#2c2d30;border:1px solid var(--line);color:var(--ink);font-size:13px;font-weight:500;padding:8px 14px;border-radius:9px;cursor:pointer}
+.btn:hover{background:#3a3b3e}.btn.p{background:#1a73e8;border-color:#1a73e8;color:#fff}.btn.on{background:#2a3a55;border-color:var(--blue);color:#a8c7fa}
+input[type=text],select{background:#202124;border:1px solid var(--line);color:var(--ink);padding:8px 11px;border-radius:9px;font-family:'Roboto Mono',monospace;font-size:13px}
+input:focus,select:focus{outline:none;border-color:var(--blue)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin:8px 0}
+.out{background:#131417;border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-family:'Roboto Mono',monospace;font-size:12.5px;color:#c8f5d6;white-space:pre-wrap;min-height:48px;margin-top:10px}
+.zones{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.bits{display:flex;gap:14px;flex-wrap:wrap}.oct{text-align:center}
+.bit{width:34px;height:40px;margin:2px;border-radius:8px;border:1px solid var(--line);background:#202124;color:var(--sub);font-family:'Roboto Mono';font-size:16px;cursor:pointer}
+.bit.one{background:#2a3a55;border-color:var(--blue);color:#fff}
+.bw{font-size:10px;color:var(--sub);font-family:'Roboto Mono'}.dec{font-size:22px;font-weight:700;font-family:'Roboto Mono';color:var(--yellow);margin-top:4px}
+.bar{display:flex;height:34px;border-radius:8px;overflow:hidden;font-size:11px;font-weight:700;margin:10px 0}
+.bar div{display:flex;align-items:center;justify-content:center;color:#0d1f14;transition:width .3s}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.kv{background:#202124;border:1px solid var(--line);border-radius:10px;padding:9px 12px}
+.kv span{display:block;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--sub)}.kv b{font-family:'Roboto Mono';font-size:14px;color:#fff}
+.nav2{display:flex;justify-content:space-between;gap:12px;margin-top:8px;flex-wrap:wrap;color:var(--sub);font-size:13px}
+@media(max-width:900px){.layout{grid-template-columns:1fr}nav.toc{position:static;display:flex;overflow-x:auto;padding:8px}nav.toc .h{display:none}nav.toc a{white-space:nowrap}.zones,.g2{grid-template-columns:1fr}.section{padding:22px 18px}}
+
+
+.layers{display:grid;gap:6px}.ly{display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:10px;border:1px solid var(--line);background:#202124;cursor:pointer;font-size:13.5px}
+.ly b{font-family:'Roboto Mono';width:22px;color:var(--yellow)}.ly.on{background:#2a3a55;border-color:var(--blue)}
+.pdu{display:flex;margin:12px 0;font-family:'Roboto Mono';font-size:12px;border-radius:8px;overflow:hidden;min-height:34px}.pdu div{padding:8px 10px;color:#0d1f14;font-weight:700;display:flex;align-items:center}
+.vl{display:flex;gap:8px;flex-wrap:wrap}.port{background:#202124;border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:12.5px;min-width:120px}
+.port select{width:100%;margin-top:6px;font-size:12px}
+nav.toc{max-height:calc(100vh - 32px);overflow:auto}
+.td{margin:10px 10px 4px;border-top:1px solid var(--line);padding-top:10px;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--sub)}
+.cli{background:#0d0f12;border:1px solid var(--line);border-radius:12px;margin:12px 0;overflow:hidden}
+.ch{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:7px 12px;background:#1a1b1e;border-bottom:1px solid var(--line);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--yellow);font-weight:700}
+.ch .btn{padding:4px 10px;font-size:11.5px;text-transform:none;letter-spacing:0}
+.cli pre{margin:0;padding:12px 14px;font-family:'Roboto Mono',monospace;font-size:12.5px;line-height:1.6;color:#c8f5d6;overflow-x:auto}
+.cli .cm{color:#7d8590}
+@media(max-width:900px){.td{display:none}}
+.si-toggle{display:inline-flex;align-items:center;gap:7px;background:#2a2b2e;border:1px solid var(--line);color:#a8c7fa;font-weight:500;font-size:12.5px;padding:7px 13px;border-radius:20px;cursor:pointer;white-space:nowrap}
+.si-divider{display:flex;align-items:center;gap:14px;margin:22px 0 0}.si-divider::before,.si-divider::after{content:'';flex:1;height:1px;background:var(--line)}
+.si-toggle:hover{background:#33343a;border-color:#5f6368}.si-toggle .arrow{display:inline-block;transition:transform .2s;font-size:10px}.si-toggle[aria-expanded="true"] .arrow{transform:rotate(180deg)}
+.si-panel{display:none;background:#1c2b22;border:1px solid #2f5b41;border-left:4px solid var(--green);border-radius:10px;padding:16px 20px;margin:14px 0 6px;font-family:'Noto Sans Sinhala',Roboto,sans-serif}
+.si-panel.open{display:block;animation:fs .18s ease}.si-panel p{color:#d3e9db;font-size:14.5px;margin:0 0 10px;line-height:1.85}.si-panel p:last-child{margin:0}.si-panel b{color:#fff}
+.si-panel code{background:#14201a;color:var(--yellow)}
+.si-label{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#7cc99a;font-weight:700;margin-bottom:8px;display:block}
+@keyframes fs{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.vocab-grid{display:flex;flex-direction:column;gap:18px}.vocab-card{background:#1a1b1e;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.vocab-header{display:flex;align-items:center;gap:12px;padding:14px 20px;border-bottom:1px solid var(--line);background:#202124}.vocab-word{font-family:'Google Sans';font-size:20px;font-weight:700;color:#a8c7fa}
+.vocab-pos{font-size:12px;color:var(--sub);font-style:italic;background:#2c2d30;padding:3px 9px;border-radius:20px}.vocab-body{padding:14px 20px}
+.vocab-meanings{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}.vocab-en{background:#1c2b3e;border-left:3px solid var(--blue);border-radius:8px;padding:10px 14px}.vocab-si{background:#1c2b22;border-left:3px solid var(--green);border-radius:8px;padding:10px 14px}
+.vocab-lang-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-bottom:6px;display:block;color:var(--sub)}
+.vocab-en p{color:#a8c7fa;font-size:13.5px;margin:0}.vocab-si p{color:#d3e9db;font-size:14.5px;margin:0;font-family:'Noto Sans Sinhala',Roboto,sans-serif}
+.vocab-sentences-head{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--sub);font-weight:700;margin-bottom:8px}
+.vocab-sentences{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}.vocab-sentences li{display:flex;gap:10px;font-size:13.5px;color:#c7cbd1}
+.vocab-tag{flex:none;font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border-radius:12px;margin-top:2px;height:fit-content}
+.tag-daily{background:#2a2b2e;color:#9aa0a6}.tag-cyber{background:#3a2530;color:#f3b8c2}.tag-net{background:#1c2b3e;color:#a8c7fa}.tag-hw{background:#2b2510;color:#fdd663}.tag-sw{background:#1c2b22;color:#81c995}
+.vocab-sentences b{color:#fff}@media(max-width:900px){.vocab-meanings{grid-template-columns:1fr}}
+.qcard{background:#1a1b1e;border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin:14px 0}.qcard p{margin:8px 0 12px;color:#dfe1e5}
+.qhead{display:flex;gap:10px;align-items:center}.qtag{font-size:10px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;padding:2px 9px;border-radius:12px;background:#1c2b3e;color:#a8c7fa}
+.ans{display:none;margin-top:12px;background:#1c2b22;border-left:4px solid var(--green);border-radius:10px;padding:12px 16px;font-size:14px;color:#d3e9db}.ans.open{display:block}.ans b{color:#fff}.ans code{background:#14201a}
+.ans .tw{margin:8px 0}.ans table{min-width:560px}
+tr.cat td{background:#1a1b1e;color:var(--blue);font-family:'Google Sans';font-weight:700;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+tr.cr{cursor:pointer}tr.cr:hover td{background:#1e1f22}tr.cr code{white-space:pre-wrap}
+.mcq-head{display:flex;justify-content:space-between;align-items:center;background:#1a1b1e;border:1px solid var(--line);border-radius:12px;padding:10px 16px;margin:14px 0}
+.mcq-card{background:#1a1b1e;border:1px solid var(--line);border-radius:14px;padding:16px 20px;margin-bottom:14px}.mcq-q{font-family:'Google Sans';font-size:15px;font-weight:600;margin:0 0 12px}.mcq-q span{color:var(--purple);margin-right:6px}
+.mcq-opts{display:flex;flex-direction:column;gap:8px}.mo{display:flex;gap:10px;align-items:center;text-align:left;background:#202124;border:1px solid var(--line);color:#dfe1e5;font-size:13.5px;padding:10px 14px;border-radius:10px;cursor:pointer}
+.mo:hover:not(.lk){background:#2c2d30}.mo i{flex:none;width:22px;height:22px;border-radius:50%;background:#2c2d30;color:var(--sub);font-size:11px;font-style:normal;font-weight:700;display:flex;align-items:center;justify-content:center}
+.mo.ok{background:#16301f;border-color:var(--green);color:#c8f5d6}.mo.bad{background:#33191c;border-color:var(--red);color:#f7c6c9}.mo.lk{cursor:default}
+.mnote{display:none;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line);font-size:12.5px;color:var(--sub)}.mnote.show{display:block}
+
+
+a.btn{text-decoration:none;display:inline-block}
+.crumb{display:inline-block;margin-bottom:14px;font-size:13px;color:#fff;opacity:.9;text-decoration:none}.crumb:hover{opacity:1;text-decoration:underline}
+nav.toc a.home{color:var(--blue);font-weight:500;margin-bottom:4px}
+.pn{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:6px}
+.pn a{flex:1;min-width:200px;text-decoration:none;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:12px 16px;box-shadow:var(--sh);font-size:13.5px}
+.pn a:hover{background:#2c2d30;border-color:#4a4d52}.pn a small{display:block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--sub);margin-bottom:2px}
+.pn a.next{text-align:right}.pn .sp{flex:1}
+footer{text-align:center;color:var(--sub);font-size:12.5px;padding:6px 0 50px}
+.back-top{display:inline-block;margin:6px 8px 0;font-size:12px;color:var(--blue);text-decoration:none}.back-top:hover{text-decoration:underline}
+</style></head><body>
+<div class="hero"><div class="hi"><a class="crumb" href="index.html">← Cisco Packet Tracer — Complete Guide</a><br>
+<span class="eyebrow">Packet Tracer · Topic 11 of 19 · Services &amp; Security</span>
+<h1>DHCP — Automatic IP Addressing</h1>
+<p>Part of the Cisco Packet Tracer Complete Guide.</p></div></div>
+<div class="layout"><nav class="toc" id="toc"><div class="h">Topics</div><a class="home" href="index.html">← All topics</a><div class="td">Foundations</div><a href="pt-01-interface.html">1. Packet Tracer Interface</a><a href="pt-02-devices-cables.html">2. Devices &amp; Cables</a><a href="pt-03-first-network.html">3. Your First Network</a><a href="pt-04-binary-ipv4.html">4. Binary &amp; IPv4</a><a href="pt-05-subnetting.html">5. Subnetting</a><div class="td">Switching &amp; Routing</div><a href="pt-06-osi-tcpip.html">6. OSI &amp; TCP/IP</a><a href="pt-07-ios-cli.html">7. The IOS CLI</a><a href="pt-08-static-routing.html">8. Routing &amp; Static Routes</a><a href="pt-09-vlans-trunks.html">9. VLANs &amp; Trunks</a><a href="pt-10-vlsm.html">10. VLSM</a><div class="td">Services &amp; Security</div><a class="on" href="pt-11-dhcp.html">11. DHCP</a><a href="pt-12-dns-web-servers.html">12. DNS &amp; Web Servers</a><a href="pt-13-acls.html">13. Access Lists (ACL)</a><a href="pt-14-nat-pat.html">14. NAT &amp; PAT</a><a href="pt-15-ospf.html">15. OSPF</a><div class="td">Sinhala</div><a href="pt-16-sinhala-vocabulary.html">16. 🇱🇰 Sinhala Vocabulary</a><div class="td">Practice &amp; Reference</div><a href="pt-17-cli-cheat-sheet.html">17. CLI Cheat Sheet</a><a href="pt-18-calculation-practice.html">18. Calculation Practice</a><a href="pt-19-mcq-practice-test.html">19. MCQ Practice Test</a></nav><main>
+<section class="section" id="t11"><div class="k"><div class="nb" style="background:#4285F4">11</div><h2>DHCP — Automatic IP Addressing</h2></div>
+<p>DHCP hands out IP address, mask, gateway and DNS automatically. In Packet Tracer: PC → <b>Desktop → IP Configuration → DHCP</b>. The server can be a Server device (<b>Services → DHCP</b>) or a router.</p><div class="si-divider"><button class="si-toggle" data-target="si-t11" aria-expanded="false"><span class="flag">🇱🇰</span> සිංහල <span class="arrow">▾</span></button></div><div class="si-panel" id="si-t11"><span class="si-label">සිංහල පරිවර්තනය</span><p><b>DHCP</b> මගින් IP address, mask, gateway සහ DNS ස්වයංක්‍රීයව ලබාදේ. ක්‍රියාවලිය <b>DORA</b> ලෙස හැඳින්වේ: Discover (PC එක broadcast කරයි), Offer (server එක ලිපිනයක් පිරිනමයි), Request (PC එක පිළිගනී), Acknowledge (server එක තහවුරු කරයි).</p><p>Static ලෙස භාවිතා කරන ලිපින (router, server) <code>ip dhcp excluded-address</code> මගින් pool එකෙන් ඉවත් කළ යුතුය. PC එකට 169.254.x.x ලැබුණේ නම් DHCP අසාර්ථකය (APIPA). Router එකකින් එහා ඇති server එකක් භාවිත කරන්නේ නම් <code>ip helper-address</code> අවශ්‍යයි.</p></div>
+<div class="sh">The DORA exchange — click each step</div>
+<div class="lab"><div class="row" id="dora"></div><div class="out" id="doraOut" style="color:#a8c7fa"></div></div>
+<div class="sh">Router as DHCP server</div>
+
+<div class="sh">Pool size calculator</div>
+<div class="lab"><div class="row"><input type="text" id="dNet" value="192.168.1.0" size="14"><span>/</span><input type="text" id="dPre" value="24" size="3"><span style="color:var(--sub)">excluded addresses</span><input type="text" id="dEx" value="10" size="4"></div><div class="out" id="dOut" style="color:#a8c7fa"></div></div>
+<div class="co warn">A PC showing <code>169.254.x.x</code> means DHCP failed (APIPA). Across routers, the router needs <code>ip helper-address &lt;dhcp-server&gt;</code> on the client-facing interface.</div><div class="sh">⌨ Packet Tracer CLI commands</div><div class="cli"><div class="ch"><span>⌨ Router as DHCP server</span><button class="btn cp">Copy</button></div><pre>enable
+configure terminal
+ip dhcp excluded-address 192.168.1.1 192.168.1.10
+ip dhcp pool LAN1
+network 192.168.1.0 255.255.255.0
+default-router 192.168.1.1
+dns-server 8.8.8.8
+domain-name school.lk
+lease 7
+exit
+end</pre></div><div class="cli"><div class="ch"><span>⌨ Relay DHCP across a router (client-facing interface)</span><button class="btn cp">Copy</button></div><pre>configure terminal
+interface g0/1
+ip helper-address 10.0.0.5
+end</pre></div><div class="cli"><div class="ch"><span>⌨ Verify, clear &amp; client side</span><button class="btn cp">Copy</button></div><pre>show ip dhcp binding
+show ip dhcp pool
+show ip dhcp conflict
+clear ip dhcp binding *
+<span class="cm">! router interface as DHCP client</span>
+configure terminal
+interface g0/0
+ip address dhcp
+no shutdown
+end
+<span class="cm">! PC Command Prompt</span>
+ipconfig /release
+ipconfig /renew</pre></div></section>
+<div class="pn"><a class="prev" href="pt-10-vlsm.html"><small>← Previous</small>10. VLSM</a><a class="next" href="pt-12-dns-web-servers.html"><small>Next →</small>12. DNS &amp; Web Servers</a></div>
+</main></div>
+<footer><a class="back-top" href="index.html">📚 Packet Tracer Index</a><a class="back-top" href="../index.html">🏠 Main Study Notes Index</a><a class="back-top" href="#toc">Back to top ↑</a></footer>
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+const toN=s=>{const p=s.trim().split(".");if(p.length!==4||p.some(x=>!/^\d{1,3}$/.test(x)||+x>255))return null;return((+p[0]<<24)|(+p[1]<<16)|(+p[2]<<8)|+p[3])>>>0};
+const toS=n=>[24,16,8,0].map(s=>(n>>>s)&255).join(".");
+/* T11 */
+const DO=[["Discover","PC → broadcast (255.255.255.255)","“Is there a DHCP server? I need an address.” Source 0.0.0.0, UDP 68→67."],["Offer","Server → PC","“You can have 192.168.1.11/24, gateway .1, DNS 8.8.8.8, lease 24h.”"],["Request","PC → broadcast","“I accept that offer.” Broadcast so other servers know which offer was chosen."],["Acknowledge","Server → PC","“Confirmed — it's yours.” PC now configures the address."]];
+$("dora").innerHTML=DO.map((d,i)=>`<button class="btn" data-i="${i}">${i+1}. ${d[0]}</button>`).join("");
+$("dora").onclick=e=>{const b=e.target.closest("button");if(!b)return;[...$("dora").children].forEach(x=>x.classList.remove("on"));b.classList.add("on");const d=DO[b.dataset.i];$("doraOut").textContent=`${d[0].toUpperCase()}\n${d[1]}\n${d[2]}`};$("dora").firstChild.click();
+function dp(){const n=toN($("dNet").value),p=+$("dPre").value,ex=+$("dEx").value||0;if(n===null||p<8||p>30){$("dOut").textContent="Enter a valid network and prefix (8–30).";return}
+const h=2**(32-p)-2,net=(n&((0xFFFFFFFF<<(32-p))>>>0))>>>0;$("dOut").textContent=`Network ${toS(net)}/${p}\nUsable hosts: ${h}\nExcluded (static): ${ex}\nAddresses leasable by DHCP: ${Math.max(0,h-ex)}`}
+["dNet","dPre","dEx"].forEach(i=>$(i).oninput=dp);dp();
+})();
+(function(){
+document.querySelectorAll('.cli').forEach(c=>{const b=c.querySelector('.cp');b.onclick=()=>{const t=c.querySelector('pre').innerText;const ok=()=>{b.textContent='Copied ✓';setTimeout(()=>b.textContent='Copy',1200)};
+const fb=()=>{const a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy');ok()}catch(e){}a.remove()};
+if(navigator.clipboard)navigator.clipboard.writeText(t).then(ok).catch(fb);else fb()}});
+})();
+(function(){
+document.querySelectorAll('.si-toggle').forEach(b=>b.addEventListener('click',()=>{const p=document.getElementById(b.dataset.target);if(!p)return;b.setAttribute('aria-expanded',p.classList.toggle('open')?'true':'false')}));
+})();
+</script></body></html>
